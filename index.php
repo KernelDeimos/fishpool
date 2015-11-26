@@ -17,7 +17,7 @@
  * the request to  particular module.
  */
 function main() {
-	$requestString
+
 }
 
 try {

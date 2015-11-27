@@ -1,4 +1,6 @@
 <?php
+// Include all framework classes
+require_once('framework/Request.php');
 
 // Define the WEB_PATH variable
 // (allows HTML pages to refer to specific locations more easily)
@@ -17,7 +19,10 @@
  * the request to  particular module.
  */
 function main() {
-	$requestString
+	$requestString = $_GET['ri'];
+	$request = new Request($requestString);
+	echo $request->dump_request_string();
+	print_r($_GET);
 }
 
 try {
@@ -25,7 +30,3 @@ try {
 } catch (Exception $e) {
 	//
 }
-
-echo "The query string is: " . $_SERVER['QUERY_STRING'];
-echo "<br />";
-echo "The RI is: " . $_GET['ri'];

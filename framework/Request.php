@@ -7,10 +7,16 @@ class Request {
 	function __construct($requestString) {
 		// Parse URL codes in the string
 		$requestString = urldecode($requestString);
+		// Remove invalid characters from the string
+		$requestString = preg_replace('/[^0-9A-z\/_-\s]/', '', $requestString);
 		// Generate path array from string (use delimiter of '/' or '\')
 		$pathArray = preg_split('(/+,\\+)', $requestString);
 		// Set instance variable
 		$this->pathArray = $pathArray;
+	}
+
+	function dump_request_string() {
+		return implode('.', $this->pathArray);
 	}
 
 	/**

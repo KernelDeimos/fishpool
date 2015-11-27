@@ -33,11 +33,15 @@ function main() {
 	
 	$page = $request->get_page();
 
-	if ($page === "test") {
+	if ($page === "" || $page === "index") {
+		$pObject = new \Pages\LandingPage();
+		$pObject->run();
+	}
+	else if ($page === "test") {
 		$ex = new \Pages\ExamplePage();
 		$ex->run();
 	}
-	if ($page === "justins_page") {
+	else if ($page === "justins_page") {
 		$ex = new \Pages\TestingPage();
 		$ex->run();
 	}

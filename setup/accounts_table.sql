@@ -1,5 +1,9 @@
+-- 2015-11-27
+CREATE SCHEMA FishpoolDB;
+use FishpoolDB;
+
 CREATE TABLE accounts (
-        id MEDIUMINT NOT NULL AUTO_INCREMENT,
+        account_id MEDIUMINT NOT NULL AUTO_INCREMENT,
         name VARCHAR(40),
         username VARCHAR(40),
         pass_hash CHAR(64),
@@ -10,5 +14,5 @@ CREATE TABLE accounts (
         activation CHAR(8) NOT NULL default 'OK',
         last_attempt datetime NOT NULL default '0000-00-00 00:00:00',
         date_created datetime NOT NULL default '0000-00-00 00:00:00',
-        PRIMARY KEY (id)
+        PRIMARY KEY (account_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;

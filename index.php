@@ -27,9 +27,8 @@ $__LOADER->add_class_path('application');
  */
 function main() {
 	$requestString = (isset($_GET['ri'])) ? $_GET['ri'] : '';
-	$request = new Request($requestString);
+	$request = new \Framework\Request($requestString);
 	echo $request->dump_request_string();
-	print_r($_GET);
 }
 
 try {

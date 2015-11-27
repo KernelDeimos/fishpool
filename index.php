@@ -1,6 +1,9 @@
 <?php
 // Include all framework classes
 require_once('framework/Request.php');
+require_once('framework/Page.php');
+require_once('framework/ContentPage.php');
+require_once('framework/Request.php');
 
 // Define the WEB_PATH variable
 // (allows HTML pages to refer to specific locations more easily)

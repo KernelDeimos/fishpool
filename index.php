@@ -32,10 +32,17 @@ function main() {
 	$request = new \Framework\Request($requestString);
 	
 	$page = $request->get_page();
+
 	if ($page === "test") {
 		$ex = new \Pages\ExamplePage();
 		$ex->run();
 	}
+	if ($page === "justins_page") {
+		$ex = new \Pages\TestingPage();
+		$ex->run();
+	}
+
+
 }
 
 try {

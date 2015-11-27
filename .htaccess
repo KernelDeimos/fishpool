@@ -3,7 +3,7 @@ RewriteEngine on
 # Only rewrite if no existing file matches (disabled right now)
 
 RewriteCond %{REQUEST_FILENAME} !-f
-# RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrites for pages
 # QSA Flag: merges client's querystring with the one generated

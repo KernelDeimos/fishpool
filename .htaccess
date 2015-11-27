@@ -1,7 +1,8 @@
 RewriteEngine on
 
 # Only rewrite if no existing file matches (disabled right now)
-# RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteCond %{REQUEST_FILENAME} !-f
 # RewriteCond %{REQUEST_FILENAME} !-d
 
 # Rewrites for pages

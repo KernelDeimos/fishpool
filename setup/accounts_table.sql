@@ -1,4 +1,4 @@
-CREATE TABLE accountmgr_accounts (
+CREATE TABLE accounts (
         id MEDIUMINT NOT NULL AUTO_INCREMENT,
         name VARCHAR(40),
         username VARCHAR(40),

@@ -10,7 +10,7 @@ abstract class ContentPage extends Page {
 	const PAGE_OKAY = 0;
 	const PAGE_REDIRECT = 1;
 
-	abstract protected function main(&$template);
+	abstract protected function main($template);
 
 	function run() {
 		$template = new Template();

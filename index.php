@@ -13,6 +13,7 @@ $__LOADER->add_class_path('pages');
 // Define the WEB_PATH variable
 // (allows HTML pages to refer to specific locations more easily)
 {
+	define('SITE_PATH',getcwd());
 	// Create a pattern for the current file-system path
 	$pattern = '/^'.preg_quote($_SERVER['DOCUMENT_ROOT'],'/').'/';
 	// Replace the match of this pattern with the host name (domain)

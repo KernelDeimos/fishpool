@@ -1,9 +1,13 @@
 <?php
 // Include all framework classes
-require_once('framework/Request.php');
-require_once('framework/Page.php');
-require_once('framework/ContentPage.php');
-require_once('framework/Request.php');
+require_once('framework/Autoloader.php');
+
+define('DEV_MODE', true);
+
+// Instantiate loader and add paths
+$__LOADER = new Autoloader();
+$__LOADER->add_class_path('framework');
+$__LOADER->add_class_path('application');
 
 // Define the WEB_PATH variable
 // (allows HTML pages to refer to specific locations more easily)
@@ -22,7 +26,7 @@ require_once('framework/Request.php');
  * the request to  particular module.
  */
 function main() {
-	$requestString = $_GET['ri'];
+	$requestString = (isset($_GET['ri'])) ? $_GET['ri'] : '';
 	$request = new Request($requestString);
 	echo $request->dump_request_string();
 	print_r($_GET);

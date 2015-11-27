@@ -6,3 +6,4 @@ Things to Document
 - Template.php
 - Page.php
 - ContentPage.php
+- Make ErrorHandler class

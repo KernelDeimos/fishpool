@@ -25,4 +25,7 @@ class Autoloader {
 			}
 		}
 	}
+	function add_class_path($path) {
+		$this->paths[] = $path;
+	}
 }

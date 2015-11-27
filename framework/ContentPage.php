@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework;
+
 /**
  * This class represents any response that is designed to
  * send HTML content to the user's browser.
@@ -12,7 +14,7 @@ abstract class ContentPage extends Page {
 
 	function run() {
 		$template = new Template();
-		$status = main($template);
+		$status = $this->main($template);
 
 		switch ($status) {
 			case ContentPage::PAGE_OKAY:

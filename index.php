@@ -8,6 +8,7 @@ define('DEV_MODE', true);
 $__LOADER = new Autoloader();
 $__LOADER->add_class_path('framework');
 $__LOADER->add_class_path('application');
+$__LOADER->add_class_path('pages');
 
 // Define the WEB_PATH variable
 // (allows HTML pages to refer to specific locations more easily)
@@ -28,7 +29,12 @@ $__LOADER->add_class_path('application');
 function main() {
 	$requestString = (isset($_GET['ri'])) ? $_GET['ri'] : '';
 	$request = new \Framework\Request($requestString);
-	echo $request->dump_request_string();
+	
+	$page = $request->get_page();
+	if ($page === "test") {
+		$ex = new \Pages\ExamplePage();
+		$ex->run();
+	}
 }
 
 try {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Framework;
+
 class Template {
 	private $vars = array();
 	private $templateFile = '';

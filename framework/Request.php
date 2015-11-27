@@ -35,7 +35,7 @@ class Request {
 	 * @return string the page name
 	*/
 	function get_page() {
-		return $pathArray[0];
+		return $this->pathArray[0];
 	}
 
 	/**

@@ -12,7 +12,7 @@ class Autoloader {
 	}
 	function attempt_loading($className) {
 		// Check each possible class path
-		for ($this->paths as $path) {
+		foreach ($this->paths as $path) {
 			// Generate expected path of file
 			$fullPath = $path.'/'.$className.'.php';
 			// Check if file exists

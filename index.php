@@ -1,4 +1,5 @@
 <?php
+
 // Include all framework classes
 require_once('framework/Autoloader.php');
 

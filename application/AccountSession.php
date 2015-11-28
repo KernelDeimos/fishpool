@@ -17,7 +17,7 @@ class AccountSession {
 	private $is_logged_in;
 	private $connection;
 
-	function __construct($connection) {\
+	function __construct($connection) {
 		// Initialize session variables
 		session_start();
 
@@ -25,7 +25,7 @@ class AccountSession {
 		$this->connection = $connection;
 
 		// Determine from session variable if user is logged in
-		if ($_SESSION['account_logged_in'] === true) {
+		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === true) {
 			$this->is_logged_in = true;
 		} else {
 			$this->is_logged_in = false;

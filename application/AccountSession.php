@@ -37,4 +37,18 @@ class AccountSession {
 	function attempt_login($email, $password) {
 		//
 	}
+
+	function logout() {
+		//
+	}
+
+	/**
+	 * This function checks to see if the user logs in
+	 *
+	 * Very simple function; I'll let somebody else write it
+	 * for practice in looking through my code, lol - KD
+	 */
+	function check_login() {
+		return false;
+	}
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Application;
+
 class AccountSession {
 
 	// Constants for account login outcomes
@@ -9,18 +11,24 @@ class AccountSession {
 	const LOGIN_ATTEMPTS_EXHAUSTED = 3;
 	const LOGIN_INVALID_EMAIL = 4;
 	const LOGIN_INTERNAL_ERROR = 5;
+	const LOGIN_EMPTY_FIELDS = 6;
 
 	// Define instance variables for session state
-	private $isLoggedIn;
+	private $is_logged_in;
+	private $connection;
 
-	function __construct() {
+	function __construct($connection) {\
+		// Initialize session variables
 		session_start();
+
+		// Instantiate instance variables with params
+		$this->connection = $connection;
 
 		// Determine from session variable if user is logged in
 		if ($_SESSION['account_logged_in'] === true) {
-			$this->isLoggedIn = true;
+			$this->is_logged_in = true;
 		} else {
-			$this->isLoggedIn = false;
+			$this->is_logged_in = false;
 		}
 	}
 
@@ -35,7 +43,7 @@ class AccountSession {
 	 * @return integer representing status of login attempt
 	 */
 	function attempt_login($email, $password) {
-		//
+		return AccountSession::LOGIN_EMPTY_FIELDS;
 	}
 
 	function logout() {

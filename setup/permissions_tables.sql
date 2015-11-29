@@ -10,7 +10,7 @@ CREATE TABLE groups_permissions (
 	FOREIGN KEY (group_id)   REFERENCES groups(group_id),
 	FOREIGN KEY (account_id) REFERENCES users(account_id),
 
-	PRIMARY KEY (id)
+	PRIMARY KEY (group_id, account_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE projects_permissions (
@@ -22,5 +22,5 @@ CREATE TABLE projects_permissions (
 	FOREIGN KEY (project_id) REFERENCES projects(project_id),
 	FOREIGN KEY (account_id) REFERENCES users(account_id),
 
-	PRIMARY KEY (id)
+	PRIMARY KEY (project_id, account_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;

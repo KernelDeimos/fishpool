@@ -5,8 +5,8 @@ CREATE TABLE users (
 	account_id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	name  VARCHAR(40),
 
-	FOREIGN KEY (id) REFERENCES accounts(account_id),
-	PRIMARY KEY (id)
+	FOREIGN KEY (account_id) REFERENCES accounts(account_id),
+	PRIMARY KEY (account_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE groups (

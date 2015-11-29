@@ -7,8 +7,9 @@ namespace Application;
  * information about new groups to the database.
  */
 class GroupsDatabase {
-	$connection;
-
+	private $connection;
+	private $lastInsertId; 
+	
 	function __construct($connection) {
 		$this->connection = $connection;
 	}
@@ -21,9 +22,19 @@ class GroupsDatabase {
 	 * @param group_name a sanitized name for the group
 	 */
 	function add_new_group($owner_id, $group_name) {
-		// Variable containing SQL statement
+		// Variable containing SQL statement		
+		$con = $this->connection->get_pdo_connection();
+		$sql = "INSERT INTO groups (owner,name,date_created) VALUES (:owner, :name, now())";
+		
 		// Create PDO Prepared Statement
+		$stmt = $con->prepare($sql);
+		
 		// Bind variables to statement
+		$stmt->bindValue("owner", $owner_id, PDO::PARAM_INT);
+		$stmt->bindValue("name", $group_name, PDO::PARAM_STR);
+		
 		// Execute statement
+		$stmt->execute();
+		$goupID = $con->lastInsertId();		
 	}
 }

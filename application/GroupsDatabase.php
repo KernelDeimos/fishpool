@@ -21,6 +21,9 @@ class GroupsDatabase {
 	 * @param group_name a sanitized name for the group
 	 */
 	function add_new_group($owner_id, $group_name) {
-		//
+		// Variable containing SQL statement
+		// Create PDO Prepared Statement
+		// Bind variables to statement
+		// Execute statement
 	}
 }

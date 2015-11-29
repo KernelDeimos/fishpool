@@ -11,52 +11,42 @@
 	<!-- / Bootstrap Include Code -->
 
 	<style>
-		.erics-style-1 {
-			background-color: darkgreen;
-			color: white;
-		}
-		.erics-style-2 {
-			background-color: cyan;
-			color: black;
-		}
-		.erics-style-3 {
-			background-color: magenta;
-			color: black;
-		}
+	.Login-Box {
+		padding-top:20px;
+		padding-bottom:8px;
+	}
+	
+	
+
 	</style>
+	
 </head>
 <body>
-	<h1>Landing Page</h1>
-	<p>
-		Hey! This is where the landing page is going to be.
-	</p>
-	<p>
-		Bootstrap is also included in this file, but it doesn't
-		really change anything until you use Bootstrap's classes.<br />
-		All Bootstrap does is create some pre-defined classes for you, basically.
-	</p>
-	<div class="container erics-style-1">
+	<h1 align="center">Fish Pool</h1>
 
-		Here is bootstrap's container class, which chooses a reasonable
-		column width based on the size of your screen.<br />
-		Tip: try resizing the window.<br />
-
-		<div class="col-xs-6 erics-style-2">
-			Bootstrap has 12 column lengths. This box extends 6
-			of those, making it half the width of the container.
-		</div>
-
-		<div class="col-xs-6 erics-style-3">
-			The "xs" in "col-xs-6" means "extra small or larger". This
-			covers all screen sizes. Available sizes are:
-			<ul>
-				<li>xs - extra small</li>
-				<li>sm - small</li>
-				<li>md - medium</li>
-				<li>lg - large</li>
-				<li>xl - extra large</li>
-			</ul>
+	<div class="container">
+		<div style="outline:5px solid black;" class="Login-Box">
+			<form class="form-horizontal" role="form" >
+				<div class="form-group">
+					<label class="control-label col-xs-4" for="user">Username:</label>
+					<div class="col-xs-3">
+						<input type="text" class="form-control" id="user" placeholder="Enter username">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-4" for="pwd">Password:</label>
+					<div class="col-xs-3"> 
+					<input type="password" class="form-control" id="pwd" placeholder="Enter password">
+					</div>
+				</div>
+				<div class="form-group"> 
+					<div class="col-xs-offset-6 col-xs-1">
+						<input type="submit" class="btn btn-default">
+					</div>
+				</div>
+			</form>
 		</div>
 	</div>
+
 </body>
 </html>

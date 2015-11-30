@@ -1,5 +1,6 @@
 <?php
 namespace Application;
+use PDO;
 
 class DatabaseConnection {
 	private $connection;
@@ -22,7 +23,7 @@ class DatabaseConnection {
 		$dbDsn = "mysql:host=".$this->host.";dbname=".$this->schema;
 
 		// Create a new PDO connection object
-		$con = new PDO( $dbDsn, $this->user, $this->pass );
+		$con = new PDO( $dbDsn, $user, $pass );
 		// Tell PDO object to throw exceptions on error
 		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
@@ -32,5 +33,11 @@ class DatabaseConnection {
 
 	function get_pdo_connection() {
 		return $this->connectionPDO;
+	}
+
+	static function create_development_connection() {
+		$dbcon = new DatabaseConnection('localhost', 'FishpoolDB');
+		$dbcon->connect_with_pdo('root', '');
+		return $dbcon;
 	}
 }

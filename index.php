@@ -53,6 +53,10 @@ function main() {
 		$ex = new \Pages\LoginPage();
 		$ex->run();
 	}
+	else if ($page === "register") {
+		$ex = new \Pages\RegisterPage();
+		$ex->run();
+	}
 	else if ($page === "justins_page") {
 		$ex = new \Pages\TestingPage();
 		$ex->run();

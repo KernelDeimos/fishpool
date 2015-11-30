@@ -49,7 +49,7 @@ class AccountSession {
 			}
 			
 			// Get Connection
-			$con = $this->connection->getConnection();
+			$con = $this->connection->get_pdo_connection();
 
 		 	// Prepare SQL statement for finding the user
 			$sql = "SELECT salt, hash, id, email, name, alias FROM accounts WHERE email=:email";

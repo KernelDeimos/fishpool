@@ -3,6 +3,11 @@
 	<title><?php echo (isset($page_title)) ? "FP - ".$page_title : "Fishpool"; ?></title>
 
 	<!-- VENDOR INCLUDES -->
+
+		<?php // Include JQuery
+			HTMLShorts::includeJS("https://code.jquery.com/jquery-2.1.4.js");
+		?>
+
 		<!-- Nice sans-serif font from Google Fonts -->
 		<link href='https://fonts.googleapis.com/css?family=PT+Sans+Caption' rel='stylesheet' type='text/css'>
 
@@ -12,13 +17,24 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
 		<!-- / Bootstrap From CDN -->
+
 	<!-- / VENDOR INCLUDES -->
 
 	<?php
 		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/normalize.css');
 		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/fp-header.css');
 		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/fp-main.css');
+
+		HTMLShorts::includeJS(WEB_PATH.'/resources/script/BasicForm.js');
 	?>
+	<script>
+		$(document).ready(function () {
+			// Attach a BasicForm object to each form
+			$('.basic-form').each(function () {
+				new BasicForm($(this));
+			});
+		});
+	</script>
 </head>
 <body>
 	<div class="fp-header">

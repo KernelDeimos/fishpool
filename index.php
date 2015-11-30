@@ -56,6 +56,10 @@ function main() {
 		$ex = new \Pages\RegisterPage();
 		$ex->run();
 	}
+	else if ($page === "register_submit") {
+		$ex = new \Pages\RegisterSubmit();
+		$ex->run();
+	}
 	else if ($page === "justins_page") {
 		$ex = new \Pages\TestingPage();
 		$ex->run();

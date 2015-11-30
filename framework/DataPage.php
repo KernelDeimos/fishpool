@@ -8,11 +8,14 @@ namespace Framework;
  */
 abstract class DataPage extends Page {
 
-	abstract protected function main($template);
+	abstract protected function main();
 
 	function run() {
-		$data = $this->main($template);
-		ob_clean();
+		$data = $this->main();
+		if (count($data) < 1) {
+			$data = array('status' => "internal_error");
+		}
+		//ob_clean();
 		echo json_encode($data);
 	}
 }

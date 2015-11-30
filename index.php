@@ -5,6 +5,17 @@ require_once('framework/Autoloader.php');
 
 define('DEV_MODE', true);
 
+function error_shutdown_function() {
+	$err = error_get_last();
+	if (DEV_MODE && $err) {
+		echo "Error occured:<br />";
+		echo "<pre>";
+		print_r($err);
+		echo "</pre>";
+	}
+}
+register_shutdown_function('error_shutdown_function');
+
 // Instantiate loader and add paths
 $__LOADER = new Autoloader();
 $__LOADER->add_class_path('framework');
@@ -38,8 +49,8 @@ function main() {
 		$pObject = new \Pages\LandingPage();
 		$pObject->run();
 	}
-	else if ($page === "test") {
-		$ex = new \Pages\ExamplePage();
+	else if ($page === "login") {
+		$ex = new \Pages\LoginPage();
 		$ex->run();
 	}
 	else if ($page === "justins_page") {

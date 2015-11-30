@@ -20,6 +20,11 @@
 	</div>
 
 	<div class="page-contents">
+		<?php
+			if (isset($contents_template)) {
+				$contents_template->run();
+			}
+		?>
 	</div>
 </body>
 </html>

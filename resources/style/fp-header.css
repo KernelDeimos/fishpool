@@ -11,3 +11,10 @@
   color: #FFF;
   font-family: 'PT Sans Caption', sans-serif;
 }
+.fp-header .fp-title small {
+  position: relative;
+  bottom: 2px;
+  font-size: 14pt;
+  font-family: 'PT Sans Caption', sans-serif;
+  opacity: 0.6;
+}

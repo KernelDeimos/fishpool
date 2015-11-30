@@ -43,7 +43,50 @@ class AccountSession {
 	 * @return integer representing status of login attempt
 	 */
 	function attempt_login($email, $password) {
-		return AccountSession::LOGIN_EMPTY_FIELDS;
+		try {
+			if ($email == '' or $password == '') {
+				return AccountSession::LOGIN_EMPTY_FIELDS;
+			}
+			
+			// Get Connection
+			$con = $this->connection->getConnection();
+
+		 	// Prepare SQL statement for finding the user
+			$sql = "SELECT salt, hash, id, email, name, alias FROM accounts WHERE email=:email";
+		 	$stmt = $con->prepare($sql);
+		 	$stmt->bindValue( "email", $email, PDO::PARAM_STR );
+		 	$stmt->execute();
+
+		 	// Ensure that no row was found
+		 	if (!( $row = $stmt->fetch(PDO::FETCH_ASSOC) )) {
+		 		return AccountSession::LOGIN_NOT_FOUND; // Account doesn't exist
+		 	}
+
+		 	// Declare some things
+		 	$salt = $row['salt'];
+		 	$hash = $row['hash'];
+
+		 	// Hash the request password
+			$requestHash = HashFunctions::getHash($password, $salt);
+
+			// Get that password out of memory
+			unset($password);
+
+			// Check if the hashes match
+			if ($hash === $requestHash) {
+				// Set the user session
+				$_SESSION['account_logged_in'] = true;
+				return AccountSession::LOGIN_OKAY;
+			} else {
+				return AccountSession::LOGIN_BAD_PASSWORD;
+			}
+		} catch (PDOException $e) {
+			// todo: log error
+			return AccountSession::LOGIN_INTERNAL_ERROR;
+		} catch (Exception $e) {
+			// todo: log error
+			return AccountSession::LOGIN_INTERNAL_ERROR;
+		}
 	}
 
 	function logout() {

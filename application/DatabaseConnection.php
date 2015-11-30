@@ -21,9 +21,8 @@ class DatabaseConnection {
 	function connect_with_pdo($user, $pass) {
 		// Generate database connection's data source name
 		$dbDsn = "mysql:host=".$this->host.";dbname=".$this->schema;
-		echo "fuck!\n";
 		// Create a new PDO connection object
-		$con = new PDO( $dbDsn, $user, $pass ); echo "it works!";
+		$con = new PDO( $dbDsn, $user, $pass );
 		// Tell PDO object to throw exceptions on error
 		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 

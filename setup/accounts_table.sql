@@ -4,8 +4,6 @@ use FishpoolDB;
 
 CREATE TABLE accounts (
 	account_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(40),
-	username VARCHAR(40),
 	pass_hash CHAR(64),
 	pass_salt CHAR(32),
 	reset_email TEXT,

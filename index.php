@@ -22,14 +22,13 @@ $__LOADER->add_class_path('framework');
 $__LOADER->add_class_path('application');
 $__LOADER->add_class_path('pages');
 
-// Define the WEB_PATH variable
-// (allows HTML pages to refer to specific locations more easily)
 {
+	// Define SITE_PATH variable (working directory)
 	define('SITE_PATH',getcwd());
-	// Create a pattern for the current file-system path
-	$pattern = '/^'.preg_quote($_SERVER['DOCUMENT_ROOT'],'/').'/';
-	// Replace the match of this pattern with the host name (domain)
-	$webpath = "http://".$_SERVER['HTTP_HOST'].preg_replace($pattern,'',getcwd());
+	// Define the WEB_PATH variable
+	// (allows HTML pages to refer to specific locations more easily)
+	$webpath = "http://".$_SERVER['HTTP_HOST']
+		.dirname($_SERVER['PHP_SELF']);
 	define('WEB_PATH',$webpath);
 }
 

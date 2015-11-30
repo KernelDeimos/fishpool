@@ -46,6 +46,10 @@ function main() {
 		$ex = new \Pages\TestingPage();
 		$ex->run();
 	}
+	else {
+		$ex = new \Pages\TemplateTestPage();
+		$ex->run();
+	}
 
 
 }

@@ -17,10 +17,17 @@ class UsersDatabase {
 
 	// Define instance variables
 	private $connection;
+	private $last_exception;
 
 	function __construct($connection) {
 		// Instantiate instance variables with params
 		$this->connection = $connection;
+		// Initialize other instance variables
+		$last_exception = '';
+	}
+
+	function get_last_exception_message() {
+		return $this->last_exception;
 	}
 
 	/**
@@ -96,10 +103,10 @@ class UsersDatabase {
 			$account_id = insert_account($email_filtered, $hash, $salt);
 			insert_user_profile($account_id, $name);
 		} catch (PDOException $e) {
-			// todo: log error
+			$this->last_exception = $e->getMessage();
 			return UsersDatabase::LOGIN_INTERNAL_ERROR;
 		} catch (Exception $e) {
-			// todo: log error
+			$this->last_exception = $e->getMessage();
 			return UsersDatabase::LOGIN_INTERNAL_ERROR;
 		}
 	}

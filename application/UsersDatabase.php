@@ -94,7 +94,7 @@ class UsersDatabase {
 
 		try {
 			$account_id = insert_account($email_filtered, $hash, $salt);
-			$insert_user_profile($account_id, $name)
+			insert_user_profile($account_id, $name);
 		} catch (PDOException $e) {
 			// todo: log error
 			return UsersDatabase::LOGIN_INTERNAL_ERROR;

@@ -21,9 +21,9 @@ class DatabaseConnection {
 	function connect_with_pdo($user, $pass) {
 		// Generate database connection's data source name
 		$dbDsn = "mysql:host=".$this->host.";dbname=".$this->schema;
-
+		echo "fuck!\n";
 		// Create a new PDO connection object
-		$con = new PDO( $dbDsn, $user, $pass );
+		$con = new PDO( $dbDsn, $user, $pass ); echo "it works!";
 		// Tell PDO object to throw exceptions on error
 		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
@@ -38,6 +38,15 @@ class DatabaseConnection {
 	static function create_development_connection() {
 		$dbcon = new DatabaseConnection('localhost', 'FishpoolDB');
 		$dbcon->connect_with_pdo('root', '');
+		return $dbcon;
+	}
+
+	static function create_from_ini($filename) {
+		$data = parse_ini_file($filename);
+		if ($data == false) return false;
+
+		$dbcon = new DatabaseConnection($data['host'], $data['schema']);
+		$dbcon->connect_with_pdo($data['user'], $data['pass']);
 		return $dbcon;
 	}
 }

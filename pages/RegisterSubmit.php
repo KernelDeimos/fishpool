@@ -4,6 +4,10 @@ namespace Pages;
 use \Framework\DataPage;
 use \Application\UsersDatabase;
 
+// you have no idea how long I spend debugging
+// because this line was missing....
+use PDOException;
+
 class RegisterSubmit extends DataPage {
 	function send_error($msg) {
 		return array(
@@ -28,7 +32,7 @@ class RegisterSubmit extends DataPage {
 
 		// Attempt to get database connection
 		try {
-			$database = \Application\DatabaseConnection::create_development_connection();
+			$database = \Application\DatabaseConnection::create_from_ini(SITE_PATH.'/config/database.ini');
 		} catch (PDOException $e) {
 			$response = array(
 				'status' => "error",

@@ -12,6 +12,10 @@ Thumbs.db
 ########
 *.log
 
+# Config *
+**********
+conf/*
+
 # Executables #
 ###############
 phpunit.phar

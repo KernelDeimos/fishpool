@@ -1,9 +1,9 @@
 -- 2015-11-27
 use FishpoolDB;
 
-CREATE TABLE groups_permissions (
-	group_id   MEDIUMINT NOT NULL AUTO_INCREMENT,
-	account_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS groups_permissions (
+	group_id   MEDIUMINT NOT NULL,
+	account_id MEDIUMINT NOT NULL,
 	permission_flags INT UNSIGNED,
 	date_created datetime NOT NULL default '0000-00-00 00:00:00',
 
@@ -13,9 +13,9 @@ CREATE TABLE groups_permissions (
 	PRIMARY KEY (group_id, account_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-CREATE TABLE projects_permissions (
-	project_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-	account_id MEDIUMINT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS projects_permissions (
+	project_id MEDIUMINT NOT NULL,
+	account_id MEDIUMINT NOT NULL,
 	permission_flags INT UNSIGNED,
 	date_created datetime NOT NULL default '0000-00-00 00:00:00',
 

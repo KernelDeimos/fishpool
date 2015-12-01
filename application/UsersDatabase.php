@@ -2,6 +2,8 @@
 
 namespace Application;
 
+use \PDO;
+
 class UsersDatabase {
 
 	// Constants for registration attempt outcomes
@@ -97,21 +99,23 @@ class UsersDatabase {
 		$salt = base64_encode(openssl_random_pseudo_bytes(32));
 
 		// Hash password
-		$hash = hash('sha256', $salt . $pass);
+		$hash = hash('sha256', $salt . $password);
 
 		try {
 			// Insert the account and get account id
 			$account_id = $this->insert_account($email_filtered, $hash, $salt);
 			// Insert a new user profile
-			insert_user_profile($account_id, $name);
+			$this->insert_user_profile($account_id, $name);
 
 		} catch (PDOException $e) {
 			$this->last_exception = $e->getMessage();
-			return UsersDatabase::LOGIN_INTERNAL_ERROR;
+			return UsersDatabase::REGISTER_INTERNAL_ERROR;
 		} catch (Exception $e) {
 			$this->last_exception = $e->getMessage();
-			return UsersDatabase::LOGIN_INTERNAL_ERROR;
+			return UsersDatabase::REGISTER_INTERNAL_ERROR;
 		}
+
+		return UsersDatabase::REGISTER_OKAY;
 	}
 
 	/**
@@ -134,7 +138,7 @@ class UsersDatabase {
 		$statement->bindValue("salt",  $salt,  PDO::PARAM_STR);
 
 		// Execute the statement
-		$stmt->execute();
+		$statement->execute();
 
 		// Return account id
 		return $con->lastInsertId();
@@ -159,7 +163,7 @@ class UsersDatabase {
 		$statement->bindValue("name",       $name,       PDO::PARAM_STR);
 
 		// Execute the statement
-		$stmt->execute();
+		$statement->execute();
 
 		// Return profile id
 		return $con->lastInsertId();

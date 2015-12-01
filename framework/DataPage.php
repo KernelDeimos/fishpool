@@ -13,7 +13,7 @@ abstract class DataPage extends Page {
 	function run() {
 		$data = $this->main();
 		if (count($data) < 1) {
-			$data = array('status' => "internal_error");
+			$data = array('status' => "internal_error", 'message' => "An internal error has occured");
 		}
 		//ob_clean();
 		echo json_encode($data);

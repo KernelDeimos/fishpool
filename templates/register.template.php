@@ -62,6 +62,9 @@
 						<input type="submit" class="btn btn-default" value="Register" style="font-family: 'PT Sans Caption', sans-serif;">
 					</div>
 				</div>
+
+				<div class="error-message">
+				</div>
 			</form>
 
 		</div>

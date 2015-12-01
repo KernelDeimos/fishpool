@@ -60,10 +60,6 @@ function main() {
 		$ex = new \Pages\RegisterSubmit();
 		$ex->run();
 	}
-	else if ($page === "justins_page") {
-		$ex = new \Pages\TestingPage();
-		$ex->run();
-	}
 	else {
 		$ex = new \Pages\TemplateTestPage();
 		$ex->run();

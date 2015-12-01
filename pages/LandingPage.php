@@ -3,7 +3,7 @@
 namespace Pages;
 use \Framework\ContentPage;
 
-class LoginPage extends ContentPage {
+class LandingPage extends ContentPage {
 	function main($main_template) {
 
 		if ($_SERVER['REQUEST_METHOD'] === "POST") {

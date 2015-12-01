@@ -5,20 +5,30 @@ require_once('framework/Autoloader.php');
 
 define('DEV_MODE', true);
 
+function error_shutdown_function() {
+	$err = error_get_last();
+	if (DEV_MODE && $err) {
+		echo "Error occured:<br />";
+		echo "<pre>";
+		print_r($err);
+		echo "</pre>";
+	}
+}
+register_shutdown_function('error_shutdown_function');
+
 // Instantiate loader and add paths
 $__LOADER = new Autoloader();
 $__LOADER->add_class_path('framework');
 $__LOADER->add_class_path('application');
 $__LOADER->add_class_path('pages');
 
-// Define the WEB_PATH variable
-// (allows HTML pages to refer to specific locations more easily)
 {
+	// Define SITE_PATH variable (working directory)
 	define('SITE_PATH',getcwd());
-	// Create a pattern for the current file-system path
-	$pattern = '/^'.preg_quote($_SERVER['DOCUMENT_ROOT'],'/').'/';
-	// Replace the match of this pattern with the host name (domain)
-	$webpath = "http://".$_SERVER['HTTP_HOST'].preg_replace($pattern,'',getcwd());
+	// Define the WEB_PATH variable
+	// (allows HTML pages to refer to specific locations more easily)
+	$webpath = "http://".$_SERVER['HTTP_HOST']
+		.dirname($_SERVER['PHP_SELF']);
 	define('WEB_PATH',$webpath);
 }
 
@@ -38,12 +48,20 @@ function main() {
 		$pObject = new \Pages\LandingPage();
 		$pObject->run();
 	}
-	else if ($page === "test") {
-		$ex = new \Pages\ExamplePage();
+	else if ($page === "login") {
+		$ex = new \Pages\LoginPage();
+		$ex->run();
+	}
+	else if ($page === "register") {
+		$ex = new \Pages\RegisterPage();
 		$ex->run();
 	}
 	else if ($page === "justins_page") {
 		$ex = new \Pages\TestingPage();
+		$ex->run();
+	}
+	else {
+		$ex = new \Pages\TemplateTestPage();
 		$ex->run();
 	}
 

@@ -1,0 +1,40 @@
+.fp-background-upper {
+	position: absolute;
+	width: 100%;
+	height: 33%;
+	// background-color: #eefcfc;
+	background-color: rgba(12, 143, 143, 0.1);
+	z-index: -1;
+}
+
+.fp-register-box {
+	@register-padding: 15px;
+	margin-top: 30px;
+	background-color: #d6dde1;
+
+	overflow: hidden;
+
+	// Effect
+	border-radius: 10px;
+
+	-webkit-box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+
+	.register-header {
+		width: 100%;
+		height: 40px;
+		background-color: #5c727f;
+		color: #FFF;
+		line-height: 40px;
+
+		padding: 0 @register-padding;
+
+		& > .title {
+			font-size: 20px;
+		}
+	}
+
+	.register-body {
+		padding: @register-padding;
+	}
+}

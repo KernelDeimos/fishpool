@@ -26,6 +26,8 @@
 }
 .fp-form-box .form-header  > .title {
   font-size: 20px;
+  color: #FFF;
+  font-family: 'PT Sans Caption', sans-serif;
 }
 .fp-form-box .form-header-background {
   position: absolute;

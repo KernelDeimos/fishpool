@@ -61,27 +61,27 @@
 	</div>
 	<div class="container erics-style-4">
 	
-	<h1>Group 14</h1>
-	<font size="6.5">&emsp;Projects</font> 
+	
+	<font size="6.5">&emsp;Groups you are involved in:</font> 
 	</br>
-	<font size="5.5">&emsp;&emsp;&emsp;Code</font> 
-	&emsp;<button type="button" class="btn btn-primary">+</button>
+<!-- <font size="5.5">&emsp;&emsp;&emsp;Code</font>
+	&emsp;<button type="button" class="btn btn-primary">+</button>-->
 	</p>
 	
 	<p>
 		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 1<br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 1 Name</i><br/>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 2<br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 2 Name</i><br/>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 3<br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 3 Name</i><br/>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 4<br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 4 Name</i><br/>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>1</i><br/></text>
 				
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>3</i><br/></text>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>5</i><br/></text>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>13</i><br/></text>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>14</i><br/></text>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>10</i><br/></text>
+		
 	</p>
 	</div>
 	

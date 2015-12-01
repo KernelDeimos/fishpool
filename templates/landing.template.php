@@ -14,6 +14,9 @@
 	.Login-Box {
 		padding-top:20px;
 		padding-bottom:8px;
+		border:2px solid black;
+		border-radius:10px;
+		box-shadow: 2px 3px 3px grey;
 	}
 	
 	
@@ -25,7 +28,7 @@
 	<h1 align="center">Fish Pool</h1>
 
 	<div class="container">
-		<div style="outline:5px solid black;" class="Login-Box">
+		<div class="Login-Box">
 			<form class="form-horizontal" role="form" >
 				<div class="form-group">
 					<label class="control-label col-xs-4" for="user">Username:</label>

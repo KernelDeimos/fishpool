@@ -24,6 +24,11 @@ class RegisterPage extends ContentPage {
 				$_POST['name']
 			);
 
+			if ($status !== \Application\UsersDatabase::REGISTER_OKAY) {
+				$regis_template->previous_name  = htmlspecialchars($_POST['name'] , ENT_COMPAT);
+				$regis_template->previous_email = htmlspecialchars($_POST['email'], ENT_COMPAT);
+			}
+
 			echo "[STATUS CODE:'".$status."']";
 		}
 

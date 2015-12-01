@@ -100,8 +100,11 @@ class UsersDatabase {
 		$hash = hash('sha256', $salt . $pass);
 
 		try {
-			$account_id = insert_account($email_filtered, $hash, $salt);
+			// Insert the account and get account id
+			$account_id = $this->insert_account($email_filtered, $hash, $salt);
+			// Insert a new user profile
 			insert_user_profile($account_id, $name);
+
 		} catch (PDOException $e) {
 			$this->last_exception = $e->getMessage();
 			return UsersDatabase::LOGIN_INTERNAL_ERROR;

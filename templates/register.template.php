@@ -1,11 +1,11 @@
 <div class="container">
-	<div class="fp-register-box">
+	<div class="fp-form-box">
 
-		<div class="register-header">
+		<div class="form-header">
 			<div class="title">Create Your Account</div>
 		</div>
 
-		<div class="register-body">
+		<div class="form-body">
 
 			<form class="form-horizontal basic-form" role="form" action="<?php echo WEB_PATH.'/register_submit' ?>" method="POST">
 				<br />

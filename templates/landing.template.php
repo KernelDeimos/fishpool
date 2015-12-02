@@ -29,34 +29,80 @@
 	</div>
 </div>
 
-<div class="container container-style-1">
-
+<div class="container">
 	<div class="fp-form-box">
 
 		<div class="form-header">
-			<div class="title">Login Page</div>
+			<div class="title">Create Your Account</div>
 		</div>
 
 		<div class="form-body">
-			<form class="form-horizontal" role="form">
-				<div class="form-group" >
-					<label class="control-label col-xs-4" for="user" style="font-family: 'PT Sans Caption', sans-serif;">Username:</label>
-					<div class="col-xs-3">
-						<input type="text" class="form-control" id="user" placeholder="Enter username" style="font-family: 'PT Sans Caption', sans-serif;">
+
+			<form
+			class="form-horizontal basic-form"
+			role="form"
+			action="<?php echo WEB_PATH.'/register_submit' ?>" method="POST"
+			data-success-url="http://www.google.ca"
+			>
+				<br />
+				<div class="form-group">
+					<label class="control-label col-xs-12 col-sm-2"
+					for="reg_name" style="font-family: 'PT Sans Caption', sans-serif;">Display Name:</label>
+
+					<div class="col-xs-12 col-sm-10">
+						<input type="text" name="name" class="form-control" id="reg_name"
+						placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
+					</div>
+				</div>
+				<br />
+				<div class="form-group">
+					<label class="control-label col-xs-12 col-sm-2"
+					for="reg_email" style="font-family: 'PT Sans Caption', sans-serif;">Email:</label>
+
+					<div class="col-xs-12 col-sm-10">
+						<input type="text" name="email" class="form-control" id="reg_email"
+						placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-xs-4" for="pwd" style="font-family: 'PT Sans Caption', sans-serif;">Password:</label>
-					<div class="col-xs-3"> 
-					<input type="password" class="form-control" id="pwd" placeholder="Enter password" style="font-family: 'PT Sans Caption', sans-serif;">
+					<label class="control-label col-xs-12 col-sm-2"
+					for="reg_repeat_email" style="font-family: 'PT Sans Caption', sans-serif;">Repeat:</label>
+
+					<div class="col-xs-12 col-sm-10">
+						<input type="text" class="form-control" id="reg_repeat_email"
+						placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
 					</div>
 				</div>
-				<div class="form-group"> 
-					<div class="col-xs-offset-6 col-xs-1">
-						<input type="submit" class="btn btn-default" name="login" value="Login" style="font-family: 'PT Sans Caption', sans-serif;">
+				<br />
+				<div class="form-group">
+					<label class="control-label col-xs-12 col-sm-2"
+					for="reg_pass" style="font-family: 'PT Sans Caption', sans-serif;">Password:</label>
+					
+					<div class="col-xs-12 col-sm-10"> 
+						<input type="password" name="pass" class="form-control" id="reg_pass"
+						placeholder="Enter password" style="font-family: 'PT Sans Caption', sans-serif;">
 					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-xs-12 col-sm-2"
+					for="reg_pass_repeat" style="font-family: 'PT Sans Caption', sans-serif;">Repeat:</label>
+					
+					<div class="col-xs-12 col-sm-10"> 
+						<input type="password" class="form-control" id="reg_pass_repeat"
+						placeholder="Enter password" style="font-family: 'PT Sans Caption', sans-serif;">
+					</div>
+				</div>
+				<br />
+				<div class="form-group"> 
+					<div class="col-sm-offset-2 col-xs-12 col-sm-10">
+						<input type="submit" class="btn btn-default" value="Register" style="font-family: 'PT Sans Caption', sans-serif;">
+					</div>
+				</div>
+
+				<div class="error-message">
 				</div>
 			</form>
+
 		</div>
 
 	</div>

@@ -9,7 +9,7 @@
   position: relative;
   width: 100%;
   height: 120px;
-  background-color: rgba(12, 143, 143, 0.5);
+  background-color: rgba(12, 143, 143, 0.4);
 }
 .fp-landing-header .container-style-1 {
   height: 100%;
@@ -21,9 +21,6 @@
   /*background-color: yellow;*/
 
   padding: 15px 0;
-}
-.container-style-1 {
-  background-color: rgba(255, 255, 255, 0.2);
 }
 .fp-form-box {
   position: relative;

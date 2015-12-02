@@ -12,9 +12,9 @@ Thumbs.db
 ########
 *.log
 
-# Config *
-**********
-conf/*
+# Config #
+##########
+*.ini
 
 # Executables #
 ###############

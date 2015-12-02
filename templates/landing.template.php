@@ -1,4 +1,12 @@
-<div class="container">
+
+<div class="fp-landing-header">
+	<div class="container container-style-1">
+		&nbsp;
+	</div>
+</div>
+
+<div class="container container-style-1">
+
 	<div class="fp-form-box">
 
 		<div class="form-header">

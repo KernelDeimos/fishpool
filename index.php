@@ -60,6 +60,10 @@ function main() {
 		$ex = new \Pages\RegisterSubmit();
 		$ex->run();
 	}
+	else if ($page === "login_submit") {
+		$ex = new \Pages\LoginSubmit();
+		$ex->run();
+	}
 	else {
 		$ex = new \Pages\TemplateTestPage();
 		$ex->run();

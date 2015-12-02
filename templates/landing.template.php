@@ -1,55 +1,127 @@
-<html>
-<head>
 
-	<title>Landing Page</title>
+<div class="fp-landing-header">
+	<div class="container container-style-1">
+		<div class="col-xs-12 col-sm-6 col-md-4 col-no-spacing fp-landing-login-box">
+			<form class="form-horizontal basic-form"
+				role="form"
+				action="<?php echo WEB_PATH.'/login_submit' ?>" method="POST"
+				data-success-url="http://www.google.ca"
+			>
 
-	<!-- Bootstrap Include Code -->
-	<!-- Latest compiled and minified CSS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
-	<!-- / Bootstrap Include Code -->
-
-	<style>
-	.Login-Box {
-		padding-top:20px;
-		padding-bottom:8px;
-		border:2px solid black;
-		border-radius:10px;
-		box-shadow: 2px 3px 3px grey;
-	}
-	
-	
-
-	</style>
-	
-</head>
-<body>
-	<h1 align="center">Fish Pool</h1>
-
-	<div class="container">
-		<div class="Login-Box">
-			<form class="form-horizontal" role="form" >
 				<div class="form-group">
-					<label class="control-label col-xs-4" for="user">Username:</label>
-					<div class="col-xs-3">
-						<input type="text" class="form-control" id="user" placeholder="Enter username">
+					<label class="control-label col-xs-4"
+					for="logn_user"
+					style="font-family: 'PT Sans Caption', sans-serif;"
+					>Email:</label>
+					<div class="col-xs-8">
+						<input name="email" type="text" class="form-control" id="logn_user" placeholder="Enter your email" style="font-family: 'PT Sans Caption', sans-serif;">
 					</div>
 				</div>
+
 				<div class="form-group">
-					<label class="control-label col-xs-4" for="pwd">Password:</label>
-					<div class="col-xs-3"> 
-					<input type="password" class="form-control" id="pwd" placeholder="Enter password">
+					<label class="control-label col-xs-4"
+					for="logn_pass"
+					style="font-family: 'PT Sans Caption', sans-serif;"
+					>Password:</label>
+					<div class="col-xs-5 col-md-4 col-lg-5">
+						<input name="pass" type="password" class="form-control" id="logn_pass" style="font-family: 'PT Sans Caption', sans-serif;">
+					</div>
+					<div class="col-xs-3 col-md-4 col-lg-3">
+						<input type="submit" class="form-control" id="logn_submit" style="font-family: 'PT Sans Caption', sans-serif;" value="Login">
 					</div>
 				</div>
-				<div class="form-group"> 
-					<div class="col-xs-offset-6 col-xs-1">
-						<input type="submit" class="btn btn-default">
-					</div>
-				</div>
+
 			</form>
 		</div>
 	</div>
+</div>
 
-</body>
-</html>
+<div class="container">
+
+	<div class="col-xs-12 col-lg-6 col-no-spacing">
+		<div class="fp-form-box">
+
+			<div class="form-header">
+				<div class="title">Create Your Account</div>
+			</div>
+
+			<div class="form-body">
+
+				<form
+				class="form-horizontal basic-form"
+				role="form"
+				action="<?php echo WEB_PATH.'/register_submit' ?>" method="POST"
+				data-success-url="http://www.google.ca"
+				>
+					<br />
+					<div class="form-group">
+						<label class="control-label col-xs-12 col-sm-3"
+						for="reg_name" style="font-family: 'PT Sans Caption', sans-serif;">Display Name:</label>
+
+						<div class="col-xs-12 col-sm-9">
+							<input type="text" name="name" class="form-control" id="reg_name"
+							placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
+						</div>
+					</div>
+					<br />
+					<div class="form-group">
+						<label class="control-label col-xs-12 col-sm-3"
+						for="reg_email" style="font-family: 'PT Sans Caption', sans-serif;">Email:</label>
+
+						<div class="col-xs-12 col-sm-9">
+							<input type="text" name="email" class="form-control" id="reg_email"
+							placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-12 col-sm-3"
+						for="reg_repeat_email" style="font-family: 'PT Sans Caption', sans-serif;">Repeat:</label>
+
+						<div class="col-xs-12 col-sm-9">
+							<input type="text" class="form-control" id="reg_repeat_email"
+							placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
+						</div>
+					</div>
+					<br />
+					<div class="form-group">
+						<label class="control-label col-xs-12 col-sm-3"
+						for="reg_pass" style="font-family: 'PT Sans Caption', sans-serif;">Password:</label>
+						
+						<div class="col-xs-12 col-sm-9"> 
+							<input type="password" name="pass" class="form-control" id="reg_pass"
+							placeholder="Enter password" style="font-family: 'PT Sans Caption', sans-serif;">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-xs-12 col-sm-3"
+						for="reg_pass_repeat" style="font-family: 'PT Sans Caption', sans-serif;">Repeat:</label>
+						
+						<div class="col-xs-12 col-sm-9"> 
+							<input type="password" class="form-control" id="reg_pass_repeat"
+							placeholder="Enter password" style="font-family: 'PT Sans Caption', sans-serif;">
+						</div>
+					</div>
+					<br />
+					<div class="form-group"> 
+						<div class="col-sm-offset-3 col-xs-12 col-sm-9">
+							<input type="submit" class="btn btn-default" value="Register" style="font-family: 'PT Sans Caption', sans-serif;">
+						</div>
+					</div>
+
+					<div class="error-message">
+					</div>
+				</form>
+
+			</div>
+
+		</div><!-- /.fp-form-box -->
+	</div><!-- /.col -->
+
+	<div class="col-xs-12 col-lg-6 col-no-spacing col-lg-spacing">
+		<div class="fp-landing-whatis">
+			<h1>What is FishPool?</h1>
+			<p>Fishy fish fish swimmy fishy fishy fish fish</p>
+		</div>
+	</div>
+
+</div><!-- /.container -->

@@ -11,9 +11,10 @@ function BasicForm (jqueryElement) {
 			dataType: "json"
 		});
 		jqxhr.done(function (data) {
-			console.log(data.echo);
 			if (data.status == "okay") {
-				location.href = self.form.data('success-url');
+				if (self.form.data('success-url') != 'undefined') {
+					location.href = self.form.data('success-url');
+				}
 			} else if (data.status == "error") {
 				self.set_error_message(data);
 			} else {
@@ -32,9 +33,14 @@ function BasicForm (jqueryElement) {
 
 BasicForm.prototype.set_error_message = function(data) {
 	// Get error box
-	var errorBox = self.form.find('.error-message').first();
-	// Apply message
-	errorBox.html(data.message);
-	// Display error box
-	errorBox.removeClass('dispnone');
+	var errorBox = this.form.find('.error-message').first();
+
+	if (errorBox.length > 0) {
+		// Apply message
+		errorBox.html(data.message);
+		// Display error box
+		errorBox.removeClass('dispnone');
+	} else {
+		alert(data.message);
+	}
 };

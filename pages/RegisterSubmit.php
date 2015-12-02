@@ -6,7 +6,7 @@ use \Application\UsersDatabase;
 
 // you have no idea how long I spend debugging
 // because this line was missing....
-use PDOException;
+use \PDOException;
 
 class RegisterSubmit extends DataPage {
 	function send_error($msg) {
@@ -72,7 +72,10 @@ class RegisterSubmit extends DataPage {
 			else /* assume value of REGISTER_INTERNAL_ERROR */ {
 				$response['message'] = "An error occured on our end D: we'll get it fixed; in the meantime, try something else!";
 				if (DEV_MODE) $response['details'] = $users_database->get_last_exception_message();
+				if (DEV_MODE) $response['status_code'] = $status;
 			}
+
+			return $response;
 		}
 	}
 }

@@ -21,10 +21,15 @@
 	<!-- / VENDOR INCLUDES -->
 
 	<?php
+		// Generic CSS classes
 		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/normalize.css');
+		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/tweaks.css');
+
+		// Site CSS classes
 		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/fp-header.css');
 		HTMLShorts::includeCSS(WEB_PATH.'/resources/style/fp-main.css');
 
+		// Form submission JavaScript
 		HTMLShorts::includeJS(WEB_PATH.'/resources/script/BasicForm.js');
 	?>
 	<script>

@@ -14,6 +14,14 @@
 .fp-landing-header .container-style-1 {
   height: 100%;
 }
+.fp-landing-login-box {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  /*background-color: yellow;*/
+
+  padding: 15px 0;
+}
 .container-style-1 {
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -36,7 +44,7 @@
   line-height: 40px;
   padding: 0 15px;
 }
-.fp-form-box .form-header > .title {
+.fp-form-box .form-header  > .title {
   font-size: 20px;
   color: #FFF;
   font-family: 'PT Sans Caption', sans-serif;
@@ -53,3 +61,5 @@
   padding: 15px;
   background-color: #d6dde1;
 }
+
+/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

@@ -1,7 +1,31 @@
 
 <div class="fp-landing-header">
 	<div class="container container-style-1">
-		&nbsp;
+		<div class="col-xs-12 col-sm-6 col-md-4 col-no-spacing fp-landing-login-box">
+			<form class="form-horizontal">
+
+				<div class="form-group">
+					<label class="control-label col-xs-4"
+					for="logn_user"
+					style="font-family: 'PT Sans Caption', sans-serif;"
+					>Email:</label>
+					<div class="col-xs-8">
+						<input type="text" class="form-control" id="logn_user" placeholder="Enter username" style="font-family: 'PT Sans Caption', sans-serif;">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-xs-4"
+					for="logn_pass"
+					style="font-family: 'PT Sans Caption', sans-serif;"
+					>Password:</label>
+					<div class="col-xs-8">
+						<input type="text" class="form-control" id="logn_pass" placeholder="Enter username" style="font-family: 'PT Sans Caption', sans-serif;">
+					</div>
+				</div>
+
+			</form>
+		</div>
 	</div>
 </div>
 

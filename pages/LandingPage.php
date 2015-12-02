@@ -10,11 +10,11 @@ class LandingPage extends ContentPage {
 			// Attempt Login
 		}
 
-		$login_template = new \Framework\Template();
-		$login_template->set_template_file(SITE_PATH."/templates/login.template.php");
+		$landing_template = new \Framework\Template();
+		$landing_template->set_template_file(SITE_PATH."/templates/landing.template.php");
 
 		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");
-		$main_template->contents_template = $login_template;
+		$main_template->contents_template = $landing_template;
 
 		return ContentPage::PAGE_OKAY;
 	}

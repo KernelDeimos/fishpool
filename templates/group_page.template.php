@@ -1,6 +1,6 @@
 <html style="min-height:100%">
 <head>
-
+	<title>Groups</title>
 	<!-- Bootstrap Include Code -->
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
@@ -40,7 +40,7 @@
 			background-color: lightgreen;
 			color: black;
 			width: 100%;
-			height: 100%;
+			
 		}
 	</style>
 </head>
@@ -59,13 +59,14 @@
 		</text>
 		
 	</div>
+	
+		
 	<div class="container erics-style-4">
 	
 	
-	<font size="6.5">&emsp;Groups you are involved in:</font> 
+	<font size="5.5">&emsp;Groups you are involved in:</font> 
 	</br>
-<!-- <font size="5.5">&emsp;&emsp;&emsp;Code</font>
-	&emsp;<button type="button" class="btn btn-primary">+</button>-->
+	
 	</p>
 	
 	<p>
@@ -80,24 +81,43 @@
 		
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>14</i><br/></text>
 		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>10</i><br/></text>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>19</i><br/></text>
 		
 	</p>
 	</div>
 	
+	</div>
+	<div class="container erics-style-4">
+		
+	<font size="5.5">&emsp;Groups you  can join:</font> 
+	</br>
+	
+	</p>
+	
+	<p>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>2</i><br/></text>
+				
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>10</i><br/></text>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>19</i><br/></text>
+		
+	</p>
+	</div>
+		
 </body>
 <footer>
 
-<div class="container erics-style-1-2">
+<div class="container = container erics-style-1-2 " style="position: absolute">
 		<br/>
 		
 		<text style="color: #ADD8E6">
-			Made by NotFishPool &copy; 2014 <br>
+			Made by FishPool &copy; 2015 <br>
 			<br/>
 		</text>
 		
 	</div>
 
-<footer>
+</footer>
 
 </html>

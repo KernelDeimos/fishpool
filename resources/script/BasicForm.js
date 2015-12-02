@@ -34,8 +34,13 @@ function BasicForm (jqueryElement) {
 BasicForm.prototype.set_error_message = function(data) {
 	// Get error box
 	var errorBox = this.form.find('.error-message').first();
-	// Apply message
-	errorBox.html(data.message);
-	// Display error box
-	errorBox.removeClass('dispnone');
+
+	if (errorBox.length > 0) {
+		// Apply message
+		errorBox.html(data.message);
+		// Display error box
+		errorBox.removeClass('dispnone');
+	} else {
+		alert(data.message);
+	}
 };

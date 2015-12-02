@@ -2,6 +2,9 @@
 
 namespace Application;
 
+use PDO;
+use PDOException;
+
 class AccountSession {
 
 	// Constants for account login outcomes
@@ -17,6 +20,8 @@ class AccountSession {
 	private $is_logged_in;
 	private $connection;
 
+	private $last_exception;
+
 	function __construct($connection) {
 		// Initialize session variables
 		session_start();
@@ -30,6 +35,10 @@ class AccountSession {
 		} else {
 			$this->is_logged_in = false;
 		}
+	}
+
+	function get_last_exception_message() {
+		return $this->last_exception;
 	}
 
 	/**
@@ -52,7 +61,7 @@ class AccountSession {
 			$con = $this->connection->get_pdo_connection();
 
 		 	// Prepare SQL statement for finding the user
-			$sql = "SELECT salt, hash, id, email, name, alias FROM accounts WHERE email=:email";
+			$sql = "SELECT account_id, pass_salt, pass_hash FROM accounts WHERE reset_email=:email";
 		 	$stmt = $con->prepare($sql);
 		 	$stmt->bindValue( "email", $email, PDO::PARAM_STR );
 		 	$stmt->execute();
@@ -81,10 +90,10 @@ class AccountSession {
 				return AccountSession::LOGIN_BAD_PASSWORD;
 			}
 		} catch (PDOException $e) {
-			// todo: log error
+			$this->last_exception = $e->getMessage();
 			return AccountSession::LOGIN_INTERNAL_ERROR;
 		} catch (Exception $e) {
-			// todo: log error
+			$this->last_exception = $e->getMessage();
 			return AccountSession::LOGIN_INTERNAL_ERROR;
 		}
 	}

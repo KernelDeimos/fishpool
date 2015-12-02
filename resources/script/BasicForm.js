@@ -12,7 +12,9 @@ function BasicForm (jqueryElement) {
 		});
 		jqxhr.done(function (data) {
 			if (data.status == "okay") {
-				location.href = self.form.data('success-url');
+				if (self.form.data('success-url') != 'undefined') {
+					location.href = self.form.data('success-url');
+				}
 			} else if (data.status == "error") {
 				self.set_error_message(data);
 			} else {

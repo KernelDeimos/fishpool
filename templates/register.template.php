@@ -7,7 +7,12 @@
 
 		<div class="form-body">
 
-			<form class="form-horizontal basic-form" role="form" action="<?php echo WEB_PATH.'/register_submit' ?>" method="POST">
+			<form
+			class="form-horizontal basic-form"
+			role="form"
+			action="<?php echo WEB_PATH.'/register_submit' ?>" method="POST"
+			data-success-url="http://www.google.ca"
+			>
 				<br />
 				<div class="form-group">
 					<label class="control-label col-xs-12 col-sm-2"

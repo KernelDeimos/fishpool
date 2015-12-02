@@ -1,3 +1,13 @@
+.col-no-spacing {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (min-width: 1200px) {
+  .col-lg-spacing {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
 .fp-background-upper {
   position: absolute;
   width: 100%;
@@ -21,6 +31,12 @@
   /*background-color: yellow;*/
 
   padding: 15px 0;
+}
+.fp-landing-whatis {
+  background-color: rgba(12, 143, 143, 0.4);
+  padding: 15px;
+  margin-top: 30px;
+  padding: 15px;
 }
 .fp-form-box {
   position: relative;

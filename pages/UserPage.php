@@ -53,8 +53,8 @@ class UserPage extends ContentPage {
 		
 		if ($account_session->check_login()) {
 			$user_template->login = true;
-			//compare loged in userID to userID of page 
-			if ($account_session->get_account_id() === $pageID){
+			// compare loged in userID to userID of page 
+			if ($account_session->get_account_id() == $pageID){
 				$user_template->is_own_page = true;				
 			}
 			else{

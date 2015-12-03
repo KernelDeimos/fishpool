@@ -65,7 +65,7 @@ function main() {
 		$ex->run();
 	}
 	else if ($page === "user") {
-		$ex = new \Pages\SessionTestPage($request);
+		$ex = new \Pages\UserPage($request);
 		$ex->run();
 	}
 	else {

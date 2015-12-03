@@ -4,7 +4,7 @@ namespace Framework;
 
 abstract class Page {
 
-	private $request;
+	protected $request;
 
 	function __construct($request) {
 		$this->request = $request;
@@ -12,8 +12,6 @@ abstract class Page {
 	function run() {
 		//
 	}
-	function get_request() {
-		return $this->request;
-	}
+	
 
 }

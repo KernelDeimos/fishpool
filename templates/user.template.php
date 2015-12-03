@@ -1,6 +1,6 @@
 <!--   FISH POOL
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#      O                                   O                #
+#      O             o                     O                #
 #       o         O                  _  ___ o               #
 #   ><>            O                |_\/  o\                #
 #                o                  |_/\___/                #
@@ -14,7 +14,7 @@
 	<div class="col-xs-12 col-lg-9">
 		<div class="fp-form-box">
 			<div class="form-header">
-			<div class="title">User Info</div>
+			<div class="title"><?php echo $user_name; ?></div>
 		</div>
 		</div>
 	</div>

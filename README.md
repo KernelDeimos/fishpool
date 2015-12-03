@@ -17,17 +17,23 @@ Next Tasks
 
 Order of Importance
 -------------------
-- make a group
-- make a project
-- add a user to a group
-- upload a file into a project
-- view all files in a project
-- view a file in a project
+- [check!] make a group
+- [check!] view all groups a user is in
 
-- view all groups a user is in
+- individual group page
+- make a project
 - view all projects in a group
 
+- individual project page
+- upload a file into a project
+- view all files in a project
+
+- individual file page
+
+- add a user to a group
+
 - delete a file
+
 - logout
 
 - activate account

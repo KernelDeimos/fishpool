@@ -22,6 +22,9 @@ class AccountSession {
 	private $is_logged_in;
 	private $connection;
 
+	// If logged in
+	private $account_info;
+
 	private $last_exception;
 
 	function __construct($connection) {
@@ -34,6 +37,7 @@ class AccountSession {
 		// Determine from session variable if user is logged in
 		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === AccountSession::LOGIN_OKAY) {
 			$this->is_logged_in = true;
+			$this->account_info = $_SESSION['account_info'];
 		} else {
 			$this->is_logged_in = false;
 		}
@@ -90,6 +94,9 @@ class AccountSession {
 			if ($hash === $requestHash) {
 				// Set the user session
 				$_SESSION['account_logged_in'] = AccountSession::LOGIN_OKAY;
+				$_SESSION['account_info'] = array(
+					'account_id' => $row['account_id']
+				);
 				return AccountSession::LOGIN_OKAY;
 			} else {
 				return AccountSession::LOGIN_BAD_PASSWORD;
@@ -117,6 +124,14 @@ class AccountSession {
 		if ($this->is_logged_in === true) {
 			return true;
 		} // else
+		return false;
+	}
+
+
+	function get_account_id() {
+		if ($this->is_logged_in) {
+			return $this->account_info['account_id'];
+		}
 		return false;
 	}
 }

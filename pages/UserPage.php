@@ -1,35 +1,52 @@
 <?php
+
 namespace Pages;
 use \Framework\ContentPage;
+
 use \Application\DatabaseConnection;
+use \Application\UsersDatabase;
 use \Application\AccountSession;
+
 use PDOException;
 
 class UserPage extends ContentPage {
+
+	function error_response($main_template, $problem) {
+		$error_template = new \Framework\Template();
+		$error_template->set_template_file(SITE_PATH."/templates/simple_message.template.php");
+		$error_template->title = "Oops!";
+		$error_template->message = $problem;
+		
+		$main_template->contents_template = $error_template;
+	}
+
 	function main($main_template) {
 		
 		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");		
-		$account_session = new AccountSession(null);		
+		$account_session = new AccountSession(null);
+
 		$user_template = new \Framework\Template();
 		$user_template->set_template_file(SITE_PATH."/templates/user.template.php");
 		
 		try {
 			$database_connection = \Application\DatabaseConnection::create_from_ini(SITE_PATH.'/config/database.ini');
 		} catch (PDOException $e) {
-			
-			$error_template = new \Framework\Template();
-			$error_template->set_template_file(SITE_PATH."/templates/simple_message.template.php");
-			$error_template->title = "Error was happen!! NOOO!!";
-			$error_template->message = "The following awful thing happen: ".$e->getMessage;
-			
-			$main_template->contents_template = $error_template;
-
+			$this->error_response($main_template, "The following internal error occured: ".$e->getMessage);
 			return ContentPage::PAGE_OKAY;
 		}
+
+		// Get PageID from page request
 		$pageID = $this->request->get_parameter(0);
 		$pageID = intval($pageID);
+
 		$users_database = new UsersDatabase($database_connection);
-		$page_user = $user_database->get_user_by_id($pageID);
+		$page_user = $users_database->get_user_by_id($pageID);
+
+		// Check for case that user doesn't exist
+		if ($page_user === false) {
+			$this->error_response($main_template, "The user you're looking for does not exist :/");
+			return ContentPage::PAGE_OKAY;
+		}
 		
 		$user_template->page_id = $pageID;
 		$user_template->user_name = $page_user->get_username();		
@@ -45,7 +62,7 @@ class UserPage extends ContentPage {
 			}
 		}
 
-		$main_template->contents_template = $login_template;
+		$main_template->contents_template = $user_template;
 		return ContentPage::PAGE_OKAY;
 	}
 }

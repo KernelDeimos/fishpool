@@ -119,6 +119,40 @@ class UsersDatabase {
 	}
 
 	/**
+	 * Creates a User object based on a record in the
+	 * database.
+	 *
+	 * @param account_id ID of the user to find
+	 * @return User object, or false if no user was found
+	 */
+	function get_user_by_id($account_id) {
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+
+		// Prepare insert statement
+		$sql = "SELECT * FROM users WHERE account_id = :account_id";
+		$statement = $con->prepare($sql);
+
+		// Bind values for profile
+		$statement->bindValue("account_id", $account_id, PDO::PARAM_INT);
+
+		// Execute the statement
+		$statement->execute();
+
+		// Check if row exists
+		if ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
+	 		// Create user object
+	 		$user = new User($row);
+	 		return $user;
+	 	} else {
+	 		return false;
+	 	}
+
+		// Return profile id
+		return $con->lastInsertId();
+	}
+
+	/**
 	 * Inserts an account directly into the database
 	 *
 	 * @throws PDOException
@@ -164,40 +198,6 @@ class UsersDatabase {
 
 		// Execute the statement
 		$statement->execute();
-
-		// Return profile id
-		return $con->lastInsertId();
-	}
-
-	/**
-	 * Creates a User object based on a record in the
-	 * database.
-	 *
-	 * @param account_id ID of the user to find
-	 * @return User object, or false if no user was found
-	 */
-	private function get_user_by_id($account_id) {
-		// Obtain a connection
-		$con = $this->connection->get_pdo_connection();
-
-		// Prepare insert statement
-		$sql = "SELECT * FROM users WHERE account_id = :account_id";
-		$statement = $con->prepare($sql);
-
-		// Bind values for profile
-		$statement->bindValue("account_id", $account_id, PDO::PARAM_INT);
-
-		// Execute the statement
-		$statement->execute();
-
-		// Check if row exists
-		if ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-	 		// Create user object
-	 		$user = new User($row);
-	 		return $user;
-	 	} else {
-	 		return false;
-	 	}
 
 		// Return profile id
 		return $con->lastInsertId();

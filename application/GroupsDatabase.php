@@ -7,8 +7,16 @@ namespace Application;
  * information about new groups to the database.
  */
 class GroupsDatabase {
+
+	const NEW_GROUP_OKAY = 1;
+	const NEW_GROUP_INTERNAL_ERROR = 2;
+	const NEW_GROUP_INVALID_NAME = 3;
+
+	const NAME_MIN_LENGTH = 2;
+	const NAME_MAX_LENGTH = 40;
+
 	private $connection;
-	private $lastInsertId; 
+	private $last_inserted; 
 	
 	function __construct($connection) {
 		$this->connection = $connection;
@@ -22,6 +30,23 @@ class GroupsDatabase {
 	 * @param group_name a sanitized name for the group
 	 */
 	function add_new_group($owner_id, $group_name) {
+
+		// Ensure that group name is valid
+		{
+			$test = preg_match('/^[\p{L}\p{N}\'\.\s]{'
+				.GroupsDatabase::NAME_MIN_LENGTH.','.GroupsDatabase::NAME_MAX_LENGTH
+				.'}$/u',
+				$name
+			);
+
+			if ($test === 0) {
+				return GroupsDatabase::NEW_GROUP_INVALID_NAME;
+			}
+			else if ($test === false) {
+				return GroupsDatabase::NEW_GROUP_INTERNAL_ERROR;
+			}
+		}
+
 		// Variable containing SQL statement		
 		$con = $this->connection->get_pdo_connection();
 		$sql = "INSERT INTO groups (owner,name,date_created) VALUES (:owner, :name, now())";
@@ -33,9 +58,17 @@ class GroupsDatabase {
 		$stmt->bindValue("owner", $owner_id, PDO::PARAM_INT);
 		$stmt->bindValue("name", $group_name, PDO::PARAM_STR);
 		
-		// Execute statement
-		$stmt->execute();
-		$goupID = $con->lastInsertId();		
+		try {
+			// Execute statement
+			$stmt->execute();
+			$this->last_inserted = $con->lastInsertId();
+
+		} catch (PDOException $e) {
+			$this->last_exception = $e->getMessage();
+			return GroupsDatabase::NEW_GROUP_INTERNAL_ERROR;
+		}
+
+		return GroupsDatabase::NEW_GROUP_OKAY;
 	}
 
 	/**
@@ -69,5 +102,9 @@ class GroupsDatabase {
 	 	}
 
 	 	return $results;
+	}
+
+	function get_last_inserted() {
+		return $this->last_inserted;
 	}
 }

@@ -32,7 +32,7 @@ class UserPage extends ContentPage {
 		try {
 			$database_connection = \Application\DatabaseConnection::create_from_ini(SITE_PATH.'/config/database.ini');
 		} catch (PDOException $e) {
-			$this->error_response($main_template, "The following internal error occured: ".$e->getMessage);
+			$this->error_response($main_template, "The following internal error occured: ".$e->getMessage());
 			return ContentPage::PAGE_OKAY;
 		}
 

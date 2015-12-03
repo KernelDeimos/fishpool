@@ -12,5 +12,8 @@ class Group {
 	function get_name() {
 		return $this->data['name'];
 	}
+	function get_owner() {
+		return $this->data['owner'];
+	}
 
 }

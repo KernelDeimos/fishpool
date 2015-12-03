@@ -72,6 +72,10 @@ function main() {
 		$ex = new \Pages\UserPage($request);
 		$ex->run();
 	}
+	else if ($page === "group") {
+		$ex = new \Pages\GroupPage($request);
+		$ex->run();
+	}
 	else {
 		$ex = new \Pages\TemplateTestPage($request);
 		$ex->run();

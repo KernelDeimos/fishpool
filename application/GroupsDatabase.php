@@ -107,6 +107,32 @@ class GroupsDatabase {
 	 	return $results;
 	}
 
+	function get_group_by_id($group_id) {
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+
+		// Prepare insert statement
+		$sql = "SELECT * FROM groups WHERE group_id=:group_id";
+		$statement = $con->prepare($sql);
+
+		// Bind values for profile
+		$statement->bindValue("group_id", $group_id, PDO::PARAM_INT);
+
+		// Execute the statement
+		$statement->execute();
+
+		$results = array();
+
+		// Check if row exists
+		if ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
+	 		// Create user object
+	 		$group = new Group($row);
+	 		return $group;
+	 	}
+
+	 	return false;
+	}
+
 	function get_last_inserted() {
 		return $this->last_inserted;
 	}

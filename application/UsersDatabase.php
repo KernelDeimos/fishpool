@@ -169,6 +169,13 @@ class UsersDatabase {
 		return $con->lastInsertId();
 	}
 
+	/**
+	 * Creates a User object based on a record in the
+	 * database.
+	 *
+	 * @param account_id ID of the user to find
+	 * @return User object, or false if no user was found
+	 */
 	private function get_user_by_id($account_id) {
 		// Obtain a connection
 		$con = $this->connection->get_pdo_connection();

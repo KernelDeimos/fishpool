@@ -1,7 +1,7 @@
 -- 2015-11-28
 use FishpoolDB;
 
-CREATE TABLE folders (
+CREATE TABLE IF NOT EXISTS folders (
 	folder_id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	-- maximum filename length on most OSs is 255
 	name  VARCHAR(255),
@@ -12,7 +12,7 @@ CREATE TABLE folders (
 	PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
-CREATE TABLE files (
+CREATE TABLE IF NOT EXISTS files (
 	file_id MEDIUMINT NOT NULL AUTO_INCREMENT,
 	folder MEDIUMINT NOT NULL,
 	-- maximum filename length on most OSs is 255

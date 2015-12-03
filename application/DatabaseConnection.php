@@ -29,6 +29,17 @@ class DatabaseConnection {
 		// Store the PDO connection object in instance
 		$this->connectionPDO = $con;
 	}
+	function connect_with_sqlite($file) {
+		// Generate database connection's data source name
+		$dbDsn = "sqlite:".$file;
+		// Create a new PDO connection object
+		$con = new PDO( $dbDsn );
+		// Tell PDO object to throw exceptions on error
+		$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
+		// Store the PDO connection object in instance
+		$this->connectionPDO = $con;
+	}
 
 	function get_pdo_connection() {
 		return $this->connectionPDO;
@@ -45,7 +56,12 @@ class DatabaseConnection {
 		if ($data == false) return false;
 
 		$dbcon = new DatabaseConnection($data['host'], $data['schema']);
-		$dbcon->connect_with_pdo($data['user'], $data['pass']);
+
+		if (isset($data['method']) && $data['method'] == "sqlite") {
+			$dbcon->connect_with_sqlite($data['file']);
+		} else {
+			$dbcon->connect_with_pdo($data['user'], $data['pass']);
+		}
 		return $dbcon;
 	}
 }

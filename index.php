@@ -64,12 +64,17 @@ function main() {
 		$ex = new \Pages\LoginSubmit($request);
 		$ex->run();
 	}
+	else if ($page === "create_group") {
+		$ex = new \Pages\NewGroupSubmit($request);
+		$ex->run();
+	}
 	else if ($page === "user") {
 		$ex = new \Pages\UserPage($request);
 		$ex->run();
 	}
 	else if ($page === "group") {
-		$ex = new \Pages\GroupPage();
+
+		$ex = new \Pages\GroupPage($request);
 		$ex->run();
 	}
 	else {

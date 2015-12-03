@@ -25,11 +25,45 @@
 				</div>
 
 				<div class="form-body">
+					I put the box here for demo; feel free to change it
 					<ul>
 						<?php if (isset($groups)) foreach ($groups as $group) { ?>
-							<li><?php $group->get_name(); ?></li>
+							<li><?php echo $group->get_name(); ?></li>
+						<?php } else { ?>
+							Error fetching groups! :/ [<?php echo $groups_fetch_error; ?>]
 						<?php } ?>
 					</ul>
+				</div>
+			</div>
+
+			<div class="fp-form-box">
+				<div class="form-header">
+					<div class="title">Create New Group</div>
+				</div>
+
+				<div class="form-body">
+					<form
+					class="form-horizontal basic-form"
+					role="form"
+					action="<?php echo WEB_PATH.'/create_group' ?>" method="POST"
+					data-success-url = "<?php echo $_SERVER['REQUEST_URI']; ?>"
+					>
+						<div class="form-group">
+							<label class="control-label col-xs-12 col-sm-2"
+							for="reg_name">Group Name:</label>
+
+							<div class="col-xs-12 col-sm-10">
+								<input type="text" name="name" class="form-control" id="reg_name"
+								placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
+							</div>
+						</div>
+						<br />
+						<div class="form-group"> 
+							<div class="col-sm-offset-2 col-xs-12 col-sm-10">
+								<input type="submit" class="btn btn-default" value="Create Group">
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		<?php } ?>

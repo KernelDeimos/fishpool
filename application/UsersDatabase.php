@@ -147,9 +147,6 @@ class UsersDatabase {
 	 	} else {
 	 		return false;
 	 	}
-
-		// Return profile id
-		return $con->lastInsertId();
 	}
 
 	/**

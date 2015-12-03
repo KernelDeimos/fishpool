@@ -5,6 +5,7 @@ use \Framework\ContentPage;
 
 use \Application\DatabaseConnection;
 use \Application\UsersDatabase;
+use \Application\GroupsDatabase;
 use \Application\AccountSession;
 
 use PDOException;
@@ -39,17 +40,28 @@ class UserPage extends ContentPage {
 		$pageID = $this->request->get_parameter(0);
 		$pageID = intval($pageID);
 
+		// Instantiate needed data managers
 		$users_database = new UsersDatabase($database_connection);
-		$page_user = $users_database->get_user_by_id($pageID);
+		$groups_database = new GroupsDatabase($database_connection);
 
+		// Get the page user
+		$page_user = $users_database->get_user_by_id($pageID);
 		// Check for case that user doesn't exist
 		if ($page_user === false) {
 			$this->error_response($main_template, "The user you're looking for does not exist :/");
 			return ContentPage::PAGE_OKAY;
 		}
 		
+		// Set values of user template
 		$user_template->page_id = $pageID;
-		$user_template->user_name = $page_user->get_username();		
+		$user_template->user_name = $page_user->get_username();
+
+		// Attempt to add groups to template
+		try {
+			$user_template->groups = $groups_database->get_groups_by_owner($pageID);
+		} catch (PDOException $e) {
+			$user_template->groups_fetch_error = $e->getMessage();
+		}
 		
 		if ($account_session->check_login()) {
 			$user_template->login = true;

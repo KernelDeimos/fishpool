@@ -86,7 +86,7 @@ class GroupsDatabase {
 		$con = $this->connection->get_pdo_connection();
 
 		// Prepare insert statement
-		$sql = "SELECT * FROM group WHERE owner = :account_id";
+		$sql = "SELECT * FROM groups WHERE owner=:account_id";
 		$statement = $con->prepare($sql);
 
 		// Bind values for profile

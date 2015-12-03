@@ -25,9 +25,12 @@
 				</div>
 
 				<div class="form-body">
+					I put the box here for demo; feel free to change it
 					<ul>
 						<?php if (isset($groups)) foreach ($groups as $group) { ?>
-							<li><?php $group->get_name(); ?></li>
+							<li><?php echo $group->get_name(); ?></li>
+						<?php } else { ?>
+							Error fetching groups! :/ [<?php echo $groups_fetch_error; ?>]
 						<?php } ?>
 					</ul>
 				</div>

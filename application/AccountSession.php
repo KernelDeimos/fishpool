@@ -53,6 +53,7 @@ class AccountSession {
 	 */
 	function attempt_login($email, $password) {
 		try {
+			file_put_contents('wtf2.txt', $password);
 			if ($email == '' or $password == '') {
 				return AccountSession::LOGIN_EMPTY_FIELDS;
 			}
@@ -72,11 +73,13 @@ class AccountSession {
 		 	}
 
 		 	// Declare some things
-		 	$salt = $row['salt'];
-		 	$hash = $row['hash'];
+		 	$salt = $row['pass_salt'];
+		 	$hash = $row['pass_hash'];
 
 		 	// Hash the request password
-			$requestHash = HashFunctions::getHash($password, $salt);
+
+			// Hash password
+			$requestHash = hash('sha256', $salt . $password);
 
 			// Get that password out of memory
 			unset($password);

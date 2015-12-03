@@ -2,7 +2,8 @@
 
 namespace Application;
 
-use \PDO;
+use PDO;
+use PDOException;
 
 class UsersDatabase {
 
@@ -96,8 +97,7 @@ class UsersDatabase {
 		}
 		
 		// Generate a salt for password hashing
-		$salt = base64_encode(openssl_random_pseudo_bytes(32));
-
+		$salt = substr(base64_encode(openssl_random_pseudo_bytes(32)),0,32);
 		// Hash password
 		$hash = hash('sha256', $salt . $password);
 

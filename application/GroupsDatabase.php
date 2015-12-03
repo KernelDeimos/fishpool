@@ -37,4 +37,37 @@ class GroupsDatabase {
 		$stmt->execute();
 		$goupID = $con->lastInsertId();		
 	}
+
+	/**
+	 * Creates an array of Group objects representing all
+	 * of the groups a particular user owns
+	 *
+	 * @param account_id ID of the user
+	 * @return User object, or false if no user was found
+	 */
+	function get_groups_by_owner($account_id) {
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+
+		// Prepare insert statement
+		$sql = "SELECT * FROM group WHERE owner = :account_id";
+		$statement = $con->prepare($sql);
+
+		// Bind values for profile
+		$statement->bindValue("account_id", $account_id, PDO::PARAM_INT);
+
+		// Execute the statement
+		$statement->execute();
+
+		$results = array();
+
+		// Check if row exists
+		while ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
+	 		// Create user object
+	 		$group = new Group($row);
+	 		$results[] = $group;
+	 	}
+
+	 	return $results;
+	}
 }

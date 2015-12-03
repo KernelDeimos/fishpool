@@ -16,9 +16,14 @@ class AccountSession {
 	const LOGIN_INTERNAL_ERROR = 5;
 	const LOGIN_EMPTY_FIELDS = 6;
 
+	const SESSION_OKAY = 1;
+
 	// Define instance variables for session state
 	private $is_logged_in;
 	private $connection;
+
+	// If logged in
+	private $account_info;
 
 	private $last_exception;
 
@@ -29,12 +34,7 @@ class AccountSession {
 		// Instantiate instance variables with params
 		$this->connection = $connection;
 
-		// Determine from session variable if user is logged in
-		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === true) {
-			$this->is_logged_in = true;
-		} else {
-			$this->is_logged_in = false;
-		}
+		$this->set_instance_from_session();
 	}
 
 	function get_last_exception_message() {
@@ -72,11 +72,13 @@ class AccountSession {
 		 	}
 
 		 	// Declare some things
-		 	$salt = $row['salt'];
-		 	$hash = $row['hash'];
+		 	$salt = $row['pass_salt'];
+		 	$hash = $row['pass_hash'];
 
 		 	// Hash the request password
-			$requestHash = HashFunctions::getHash($password, $salt);
+
+			// Hash password
+			$requestHash = hash('sha256', $salt . $password);
 
 			// Get that password out of memory
 			unset($password);
@@ -84,7 +86,11 @@ class AccountSession {
 			// Check if the hashes match
 			if ($hash === $requestHash) {
 				// Set the user session
-				$_SESSION['account_logged_in'] = true;
+				$_SESSION['account_logged_in'] = AccountSession::LOGIN_OKAY;
+				$_SESSION['account_info'] = array(
+					'account_id' => $row['account_id']
+				);
+				$this->set_instance_from_session();
 				return AccountSession::LOGIN_OKAY;
 			} else {
 				return AccountSession::LOGIN_BAD_PASSWORD;
@@ -109,6 +115,27 @@ class AccountSession {
 	 * for practice in looking through my code, lol - KD
 	 */
 	function check_login() {
+		if ($this->is_logged_in === true) {
+			return true;
+		} // else
 		return false;
+	}
+
+
+	function get_account_id() {
+		if ($this->is_logged_in) {
+			return $this->account_info['account_id'];
+		}
+		return false;
+	}
+
+	private function set_instance_from_session() {
+		// Determine from session variable if user is logged in
+		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === AccountSession::LOGIN_OKAY) {
+			$this->is_logged_in = true;
+			$this->account_info = $_SESSION['account_info'];
+		} else {
+			$this->is_logged_in = false;
+		}
 	}
 }

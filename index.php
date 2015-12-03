@@ -64,6 +64,10 @@ function main() {
 		$ex = new \Pages\LoginSubmit();
 		$ex->run();
 	}
+	else if ($page === "UpDownCode") {
+		$ex = new \Pages\UpDownCode();
+		$ex->run();
+	}
 	else {
 		$ex = new \Pages\TemplateTestPage();
 		$ex->run();

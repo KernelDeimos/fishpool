@@ -45,34 +45,33 @@ function main() {
 	$page = $request->get_page();
 
 	if ($page === "" || $page === "index") {
-		$pObject = new \Pages\LandingPage();
+		$pObject = new \Pages\LandingPage($request);
 		$pObject->run();
 	}
 	else if ($page === "login") {
-		$ex = new \Pages\LoginPage();
+		$ex = new \Pages\LoginPage($request);
 		$ex->run();
 	}
 	else if ($page === "register") {
-		$ex = new \Pages\RegisterPage();
+		$ex = new \Pages\RegisterPage($request);
 		$ex->run();
 	}
 	else if ($page === "register_submit") {
-		$ex = new \Pages\RegisterSubmit();
+		$ex = new \Pages\RegisterSubmit($request);
 		$ex->run();
 	}
 	else if ($page === "login_submit") {
-		$ex = new \Pages\LoginSubmit();
+		$ex = new \Pages\LoginSubmit($request);
 		$ex->run();
 	}
 	else if ($page === "user") {
-		$ex = new \Pages\SessionTestPage();
+		$ex = new \Pages\SessionTestPage($request);
 		$ex->run();
 	}
 	else {
-		$ex = new \Pages\TemplateTestPage();
+		$ex = new \Pages\TemplateTestPage($request);
 		$ex->run();
 	}
-
 
 }
 

@@ -21,12 +21,20 @@
 			color: white;
 			width: 100%;
 		}
-		.erics-style-1-2 {
+		.head-style {
 			background-color: darkblue;
 			color: white;
 			width: 100%;
-						
+			padding: 15px;
 		}
+
+		.foot-style {
+			background-color: darkblue;
+			color: white;
+			width: 100%;
+			padding: 1px;
+		}
+
 		
 		.erics-style-2 {
 			background-color: cyan;
@@ -43,21 +51,28 @@
 			width: 100%;
 			
 		}
+		.erics-style-5 {
+			display: inline-block;
+			float: right;
+			background-color: darkblue;
+			color: #ADD8E6;
+
+		}
+
+		
 	</style>
 </head>
 <body style="height:100%">
-	<div class="container erics-style-1-2">
-		<br/>
+	<div class="container head-style">
 		Signed in as :
 	
-		<text style="color: #ADD8E6" >
+		<span style="color: #ADD8E6" >
 			UserName
 			
-		</text>
-		<text style="color: #ADD8E6" text-align : "right" position: "relative">
-			Log out<br>
-			<br/>
-		</text>
+		</span>
+		<span class="erics-style-5">
+			Log out
+		</span>
 		
 	</div>
 	
@@ -90,7 +105,7 @@
 </body>
 <footer>
 
-<div class="container = container erics-style-1-2 " style="position: absolute">
+<div class="container = container foot-style " style="position: absolute">
 		<br/>
 		
 		<text style="color: #ADD8E6">

@@ -118,10 +118,11 @@
 	</div><!-- /.col -->
 
 	<div class="col-xs-12 col-lg-6 col-no-spacing col-lg-spacing">
-		<div class="fp-landing-whatis">
+		<div class="fp-landing-whatis" style="font-family: 'PT Sans Caption', sans-serif;">
 			<h1>What is FishPool?</h1>
 			<p>Fishy fish fish swimmy fishy fishy fish fish</p>
 		</div>
 	</div>
 
+	<img src="<?php echo WEB_PATH."/resources/images/Fish.png"; ?>"/>
 </div><!-- /.container -->

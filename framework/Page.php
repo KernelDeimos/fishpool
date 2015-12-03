@@ -3,7 +3,17 @@
 namespace Framework;
 
 abstract class Page {
-	function run($request) {
-		echo "No Output";
+
+	private $request;
+
+	function __construct($request) {
+		$this->request = $request;
 	}
+	function run() {
+		//
+	}
+	function get_request() {
+		return $this->request;
+	}
+
 }

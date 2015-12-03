@@ -52,8 +52,10 @@ class LoginSubmit extends DataPage {
 		);
 
 		if ($status === AccountSession::LOGIN_OKAY) {
+			$account_id = $account_session->get_account_id();
 			return array(
-				'status' => "okay"
+				'status' => "okay",
+				'redirect' => WEB_PATH.'/user/'.$account_id
 			);
 		} else {
 			$response = array();

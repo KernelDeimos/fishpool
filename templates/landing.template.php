@@ -5,7 +5,6 @@
 			<form class="form-horizontal basic-form"
 				role="form"
 				action="<?php echo WEB_PATH.'/login_submit' ?>" method="POST"
-				data-success-url-DISABLED="http://www.google.ca"
 			>
 
 				<div class="form-group">

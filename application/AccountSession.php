@@ -34,13 +34,7 @@ class AccountSession {
 		// Instantiate instance variables with params
 		$this->connection = $connection;
 
-		// Determine from session variable if user is logged in
-		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === AccountSession::LOGIN_OKAY) {
-			$this->is_logged_in = true;
-			$this->account_info = $_SESSION['account_info'];
-		} else {
-			$this->is_logged_in = false;
-		}
+		$this->set_instance_from_session();
 	}
 
 	function get_last_exception_message() {
@@ -59,7 +53,6 @@ class AccountSession {
 	 */
 	function attempt_login($email, $password) {
 		try {
-			file_put_contents('wtf2.txt', $password);
 			if ($email == '' or $password == '') {
 				return AccountSession::LOGIN_EMPTY_FIELDS;
 			}
@@ -97,6 +90,7 @@ class AccountSession {
 				$_SESSION['account_info'] = array(
 					'account_id' => $row['account_id']
 				);
+				$this->set_instance_from_session();
 				return AccountSession::LOGIN_OKAY;
 			} else {
 				return AccountSession::LOGIN_BAD_PASSWORD;
@@ -133,5 +127,15 @@ class AccountSession {
 			return $this->account_info['account_id'];
 		}
 		return false;
+	}
+
+	private function set_instance_from_session() {
+		// Determine from session variable if user is logged in
+		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === AccountSession::LOGIN_OKAY) {
+			$this->is_logged_in = true;
+			$this->account_info = $_SESSION['account_info'];
+		} else {
+			$this->is_logged_in = false;
+		}
 	}
 }

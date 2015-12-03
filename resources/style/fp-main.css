@@ -29,12 +29,10 @@
   float: right;
   height: 100%;
   /*background-color: yellow;*/
-
   padding: 15px 0;
 }
 .fp-landing-whatis {
   background-color: rgba(12, 143, 143, 0.4);
-  padding: 15px;
   margin-top: 30px;
   padding: 15px;
 }
@@ -57,7 +55,7 @@
   line-height: 40px;
   padding: 0 15px;
 }
-.fp-form-box .form-header  > .title {
+.fp-form-box .form-header > .title {
   font-size: 20px;
   color: #FFF;
   font-family: 'PT Sans Caption', sans-serif;
@@ -74,5 +72,10 @@
   padding: 15px;
   background-color: #d6dde1;
 }
-
-/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */
+.fp-form-box label {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+.fp-form-box input[type=submit],
+.fp-form-box input[type=button] {
+  font-family: 'PT Sans Caption', sans-serif;
+}

@@ -2,6 +2,9 @@
 
 namespace Application;
 
+use PDO;
+use PDOException;
+
 /**
  * Acts a sa factory for Group objects and communicates
  * information about new groups to the database.
@@ -36,7 +39,7 @@ class GroupsDatabase {
 			$test = preg_match('/^[\p{L}\p{N}\'\.\s]{'
 				.GroupsDatabase::NAME_MIN_LENGTH.','.GroupsDatabase::NAME_MAX_LENGTH
 				.'}$/u',
-				$name
+				$group_name
 			);
 
 			if ($test === 0) {

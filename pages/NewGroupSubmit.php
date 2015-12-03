@@ -10,7 +10,7 @@ use \Application\AccountSession;
 // because this line was missing....
 use PDOException;
 
-class RegisterSubmit extends DataPage {
+class NewGroupSubmit extends DataPage {
 	function send_error($msg) {
 		return array(
 			'status' => "error",

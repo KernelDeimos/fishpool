@@ -148,6 +148,23 @@ class UsersDatabase {
 	 		return false;
 	 	}
 	}
+	function set_twitter($account_id, $twitter){
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+		
+	}
+	function set_facebook($account_id, $facebook){
+		
+	}
+	function set_linkedin($account_id, $linkedin){
+		
+	}
+	function set_email($account_id, $email){
+		
+	}
+	function set_bio($account_id, $bio){
+		
+	}
 
 	/**
 	 * Inserts an account directly into the database
@@ -199,5 +216,6 @@ class UsersDatabase {
 		// Return profile id
 		return $con->lastInsertId();
 	}
+	
 	
 }

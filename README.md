@@ -25,6 +25,7 @@ Order of Importance
 - [check!] view all projects in a group
 
 - [nix] individual project page
+- folder view page
 - upload a file into a project
 - view all files in a project
 

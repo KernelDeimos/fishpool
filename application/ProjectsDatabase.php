@@ -33,7 +33,7 @@ class ProjectsDatabase {
 	 * @param owner_id integer id of the owner of the group
 	 * @param PROJECT_name a sanitized name for the group
 	 */
-	function add_new_project($group_id, $project_name) {
+	function add_new_project($group_id, $root_folder_id, $project_name) {
 
 		// Ensure that group name is valid
 		{

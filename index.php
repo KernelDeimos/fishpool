@@ -64,6 +64,10 @@ function main() {
 		$ex = new \Pages\LoginSubmit($request);
 		$ex->run();
 	}
+	else if ($page === "UpDownCode") {
+		$ex = new \Pages\UpDownCode();
+		$ex->run();
+	}
 	else if ($page === "create_group") {
 		$ex = new \Pages\NewGroupSubmit($request);
 		$ex->run();

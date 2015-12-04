@@ -20,8 +20,8 @@ Order of Importance
 - [check!] make a group
 - [check!] view all groups a user is in
 
-- individual group page
-- make a project
+- [check!] individual group page
+- [check!] make a project
 - view all projects in a group
 
 - individual project page

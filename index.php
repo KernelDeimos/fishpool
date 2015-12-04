@@ -68,6 +68,10 @@ function main() {
 		$ex = new \Pages\NewGroupSubmit($request);
 		$ex->run();
 	}
+	else if ($page === "create_project") {
+		$ex = new \Pages\NewProjectSubmit($request);
+		$ex->run();
+	}
 	else if ($page === "user") {
 		$ex = new \Pages\UserPage($request);
 		$ex->run();

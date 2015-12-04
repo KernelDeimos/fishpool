@@ -54,7 +54,7 @@
 
 							<div class="col-xs-12 col-sm-10">
 								<input type="text" name="name" class="form-control" id="reg_name"
-								placeholder="Enter an email" style="font-family: 'PT Sans Caption', sans-serif;">
+								placeholder="The Code Group" style="font-family: 'PT Sans Caption', sans-serif;">
 							</div>
 						</div>
 						<br />

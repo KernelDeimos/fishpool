@@ -63,7 +63,7 @@ class GroupPage extends ContentPage {
 		}
 		
 		// Set values of group template
-		$group_template->page_id = $pageID;
+		$group_template->group_id = $pageID;
 		$group_template->group_name = $page_group->get_name();
 		
 		if ($account_session->check_login()) {

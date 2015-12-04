@@ -35,7 +35,7 @@ $__LOADER->add_class_path('pages');
 /**
  * Main website function
  *
- * This function determins the request being made, and routes
+ * This function determines the request being made, and routes
  * the request to  particular module.
  */
 function main() {
@@ -77,6 +77,7 @@ function main() {
 		$ex->run();
 	}
 	else if ($page === "group") {
+
 		$ex = new \Pages\GroupPage($request);
 		$ex->run();
 	}

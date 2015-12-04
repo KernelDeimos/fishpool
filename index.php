@@ -35,7 +35,7 @@ $__LOADER->add_class_path('pages');
 /**
  * Main website function
  *
- * This function determins the request being made, and routes
+ * This function determines the request being made, and routes
  * the request to  particular module.
  */
 function main() {
@@ -45,34 +45,50 @@ function main() {
 	$page = $request->get_page();
 
 	if ($page === "" || $page === "index") {
-		$pObject = new \Pages\LandingPage();
+		$pObject = new \Pages\LandingPage($request);
 		$pObject->run();
 	}
 	else if ($page === "login") {
-		$ex = new \Pages\LoginPage();
+		$ex = new \Pages\LoginPage($request);
 		$ex->run();
 	}
 	else if ($page === "register") {
-		$ex = new \Pages\RegisterPage();
+		$ex = new \Pages\RegisterPage($request);
 		$ex->run();
 	}
 	else if ($page === "register_submit") {
-		$ex = new \Pages\RegisterSubmit();
+		$ex = new \Pages\RegisterSubmit($request);
 		$ex->run();
 	}
 	else if ($page === "login_submit") {
-		$ex = new \Pages\LoginSubmit();
+		$ex = new \Pages\LoginSubmit($request);
 		$ex->run();
 	}
 	else if ($page === "UpDownCode") {
 		$ex = new \Pages\UpDownCode();
 		$ex->run();
 	}
-	else {
-		$ex = new \Pages\TemplateTestPage();
+	else if ($page === "create_group") {
+		$ex = new \Pages\NewGroupSubmit($request);
 		$ex->run();
 	}
+	else if ($page === "create_project") {
+		$ex = new \Pages\NewProjectSubmit($request);
+		$ex->run();
+	}
+	else if ($page === "user") {
+		$ex = new \Pages\UserPage($request);
+		$ex->run();
+	}
+	else if ($page === "group") {
 
+		$ex = new \Pages\GroupPage($request);
+		$ex->run();
+	}
+	else {
+		$ex = new \Pages\TemplateTestPage($request);
+		$ex->run();
+	}
 
 }
 

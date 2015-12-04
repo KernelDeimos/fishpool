@@ -1,6 +1,6 @@
 <html style="min-height:100%">
 <head>
-	<title>Groups</title>
+	<title>Projects</title>
 	<!-- Bootstrap Include Code -->
 	<!-- Latest compiled and minified CSS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
@@ -13,6 +13,7 @@
 			background-color: darkblue;
 			color: black;
 			width: 100%;
+			
 		}
 		
 		.erics-style-1 {
@@ -20,12 +21,20 @@
 			color: white;
 			width: 100%;
 		}
-		.erics-style-1-2 {
+		.head-style {
 			background-color: darkblue;
 			color: white;
 			width: 100%;
-			
+			padding: 15px;
 		}
+
+		.foot-style {
+			background-color: darkblue;
+			color: white;
+			width: 100%;
+			padding: 1px;
+		}
+
 		
 		.erics-style-2 {
 			background-color: cyan;
@@ -42,73 +51,61 @@
 			width: 100%;
 			
 		}
+		.erics-style-5 {
+			display: inline-block;
+			float: right;
+			background-color: darkblue;
+			color: #ADD8E6;
+
+		}
+
+		
 	</style>
 </head>
 <body style="height:100%">
-	<div class="container erics-style-1-2">
-		<br/>
+	<div class="container head-style">
 		Signed in as :
 	
-		<text style="color: #ADD8E6" >
+		<span style="color: #ADD8E6" >
 			UserName
 			
-		</text>
-		<text style="color: #ADD8E6" align = "right"postion: "relative">
-			Log out<br>
-			<br/>
-		</text>
+		</span>
+		<span class="erics-style-5">
+			Log out
+		</span>
 		
 	</div>
 	
-		
 	<div class="container erics-style-4">
 	
-	
-	<font size="5.5">&emsp;Groups you are involved in:</font> 
+	<h1>Group 14</h1>
+	<font size="6.5">&emsp;Projects</font> 
 	</br>
-	
+	<font size="5.5">&emsp;&emsp;&emsp;Code</font> 
+	&emsp;<button type="button" class="btn btn-primary">+</button>
 	</p>
 	
 	<p>
 		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>1</i><br/></text>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 1<br/>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 1 Name</i><br/>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 2<br/>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 2 Name</i><br/>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 3<br/>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 3 Name</i><br/>
+		
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #0000FF">Code Link 4<br/>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<text style="color: #000000">Done by: <text style="color: #FF0000"><i>Author 4 Name</i><br/>
 				
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>3</i><br/></text>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>5</i><br/></text>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>13</i><br/></text>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>14</i><br/></text>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>19</i><br/></text>
-		
 	</p>
 	</div>
 	
-	</div>
-	<div class="container erics-style-4">
-		
-	<font size="5.5">&emsp;Groups you  can join:</font> 
-	</br>
-	
-	</p>
-	
-	<p>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>2</i><br/></text>
-				
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>10</i><br/></text>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color="#000000" size ="4">Group <text style="color: #FF0000"><i>19</i><br/></text>
-		
-	</p>
-	</div>
-		
 </body>
 <footer>
 
-<div class="container = container erics-style-1-2 " style="position: absolute">
+<div class="container = container foot-style " style="position: absolute">
 		<br/>
 		
 		<text style="color: #ADD8E6">

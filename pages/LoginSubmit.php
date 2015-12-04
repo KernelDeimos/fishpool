@@ -2,13 +2,13 @@
 
 namespace Pages;
 use \Framework\DataPage;
-use \Application\UsersDatabase;
+use \Application\AccountSession;
 
 // you have no idea how long I spend debugging
 // because this line was missing....
-use PDOException;
+use \PDOException;
 
-class RegisterSubmit extends DataPage {
+class LoginSubmit extends DataPage {
 	function send_error($msg) {
 		return array(
 			'status' => "error",
@@ -42,36 +42,43 @@ class RegisterSubmit extends DataPage {
 			return $response;
 		}
 
-		// Get instance of UsersDatabase
-		$users_database = new UsersDatabase($database);
+		// Get instance of AccountSession
+		$account_session = new AccountSession($database);
 
 		// Attempt to register user
-		$status = $users_database->attempt_register(
+		$status = $account_session->attempt_login(
 			$_POST['email'],
-			$_POST['pass'],
-			$_POST['name']
+			$_POST['pass']
 		);
 
-		if ($status === UsersDatabase::REGISTER_OKAY) {
+		if ($status === AccountSession::LOGIN_OKAY) {
+			$account_id = $account_session->get_account_id();
 			return array(
-				'status' => "okay"
+				'status' => "okay",
+				'redirect' => WEB_PATH.'/user/'.$account_id
 			);
 		} else {
 			$response = array();
 			$response['status'] = "error";
 
-			if ($status == UsersDatabase::REGISTER_EMPTY_FIELDS) {
+			if ($status == AccountSession::LOGIN_EMPTY_FIELDS) {
 				$response['message'] = "Please fill in all fields";
 			}
-			else if ($status == UsersDatabase::REGISTER_INVALID_NAME) {
-				$response['message'] = "Display name must contain only A-z0-9'. and must be between 2 and 40 characters";
-			}
-			else if ($status == UsersDatabase::REGISTER_INVALID_EMAIL) {
+			else if ($status == AccountSession::LOGIN_INVALID_EMAIL) {
 				$response['message'] = "Please enter a valid email address";
+			}
+			else if ($status == AccountSession::LOGIN_BAD_PASSWORD) {
+				$response['message'] = "Your password was incorrect";
+			}
+			else if ($status == AccountSession::LOGIN_ATTEMPTS_EXHAUSTED) {
+				$response['message'] = "You have tried to login too many times. Please wait up to 15 minutes.";
+			}
+			else if ($status == AccountSession::LOGIN_NOT_FOUND) {
+				$response['message'] = "An account with that email wasn't found, but you can create it!";
 			}
 			else /* assume value of REGISTER_INTERNAL_ERROR */ {
 				$response['message'] = "An error occured on our end D: we'll get it fixed; in the meantime, try something else!";
-				if (DEV_MODE) $response['details'] = $users_database->get_last_exception_message();
+				if (DEV_MODE) $response['details'] = $account_session->get_last_exception_message();
 				if (DEV_MODE) $response['status_code'] = $status;
 			}
 

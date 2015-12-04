@@ -74,5 +74,12 @@
   padding: 15px;
   background-color: #d6dde1;
 }
+.fp-form-box label {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+.fp-form-box input[type=submit],
+.fp-form-box input[type=button] {
+  font-family: 'PT Sans Caption', sans-serif;
+}
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

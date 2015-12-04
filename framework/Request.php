@@ -12,7 +12,7 @@ class Request {
 		// Remove invalid characters from the string
 		$requestString = preg_replace('/[^0-9A-z_\/\s-]/', '', $requestString);
 		// Generate path array from string (use delimiter of '/' or '\')
-		$pathArray = preg_split('(/+,\\+)', $requestString);
+		$pathArray = preg_split('/[\/]/', $requestString);
 		// Set instance variable
 		$this->pathArray = $pathArray;
 	}

@@ -9,9 +9,8 @@ CREATE TABLE IF NOT EXISTS folders (
 
 	date_added datetime NOT NULL default '0000-00-00 00:00:00',
 
-	FOREIGN KEY (project) REFERENCES projects(project_id),
 	FOREIGN KEY (parent)  REFERENCES folders(folder_id),
-	PRIMARY KEY (id)
+	PRIMARY KEY (folder_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 CREATE TABLE IF NOT EXISTS files (
@@ -27,5 +26,5 @@ CREATE TABLE IF NOT EXISTS files (
 	contents TEXT,
 
 	FOREIGN KEY (folder) REFERENCES folders(folder_id),
-	PRIMARY KEY (id)
+	PRIMARY KEY (file_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8;

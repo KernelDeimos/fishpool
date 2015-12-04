@@ -71,7 +71,8 @@
 	<h1><?php echo $group_name ?></h1>
 	<font size="6.5">&emsp;Projects</font> 
 	</br>
-	<font size="5.5">&emsp;&emsp;&emsp;Code</font> 
+	<?php foreach ($group_projects as $project) { ?>
+	<font size="5.5">&emsp;&emsp;&emsp;<?php echo $project->get_name(); ?></font> 
 	&emsp;<button type="button" class="btn btn-primary">+</button>
 	
 	<p>
@@ -87,8 +88,31 @@
 		
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #0000FF">Code Link 4</font><br/>
 		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #000000">Done by: </font><font style="color: #FF0000"><i>Author 4 Name</i></font><br/>
+
+		<form
+		class="form-horizontal basic-form"
+		role="form"
+		action="" method="POST"
+		data-success-url="<?php echo $_SERVER['REQUEST_URI']; ?>"
+		>
+			<input type="hidden" name="group_id" value="<?php echo $group_id; ?>" />
+			<div class="form-group">
+				<label class="control-label col-xs-12 col-sm-2"
+				for="reg_name">File:</label>
+
+				<div class="col-xs-6 col-sm-4">
+					<input type="file" name="name" class="form-control" id="reg_name"
+					placeholder="Project Name">
+				</div>
+
+				<div class="col-xs-6 col-sm-4">
+					<input type="submit" class="btn btn-default" value="Upload File">
+				</div>
+			</div>
+		</form>
 				
 	</p>
+	<?php } ?>
 
 	<h1 />
 	<h2>Create a Project</h2>

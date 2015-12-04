@@ -14,7 +14,13 @@
 	<div class="col-xs-12 col-lg-9">
 		<div class="fp-form-box">
 			<div class="form-header">
-				<div class="title"><?php echo $user_name; ?></div>
+				<div class="title"><?php echo $user_name . " bio";?>
+					<?php if ($is_own_page) { ?>
+						<div class="form-body">
+							edit button here
+						</div>
+					<?php } ?>
+				</div>
 			</div>
 		</div>
 

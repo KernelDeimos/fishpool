@@ -20,11 +20,11 @@ Order of Importance
 - [check!] make a group
 - [check!] view all groups a user is in
 
-- individual group page
-- make a project
-- view all projects in a group
+- [check!] individual group page
+- [check!] make a project
+- [check!] view all projects in a group
 
-- individual project page
+- [nix] individual project page
 - upload a file into a project
 - view all files in a project
 

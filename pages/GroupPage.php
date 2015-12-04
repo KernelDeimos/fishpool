@@ -6,6 +6,7 @@ use \Framework\ContentPage;
 use \Application\DatabaseConnection;
 use \Application\UsersDatabase;
 use \Application\GroupsDatabase;
+use \Application\ProjectsDatabase;
 use \Application\AccountSession;
 
 use PDOException;
@@ -47,24 +48,30 @@ class GroupPage extends ContentPage {
 		// Instantiate needed data managers
 		$users_database = new UsersDatabase($database_connection);
 		$groups_database = new GroupsDatabase($database_connection);
+		$projects_database = new ProjectsDatabase($database_connection);
 
 		// Get the page group
 		try {
+
 			$page_group = $groups_database->get_group_by_id($pageID);
+			// Check for case that group doesn't exist
+			if ($page_group === false) {
+				$this->error_response($main_template, "The group you're looking for does not exist :/");
+				return ContentPage::PAGE_OKAY;
+			}
+
+			// Get a list of group projects
+			$group_projects = $projects_database->get_projects_by_group($pageID);
+
 		} catch (PDOException $e) {
 			$this->error_response($main_template, "The following internal error occured: ".$e->getMessage());
 			return ContentPage::PAGE_OKAY;
 		}
 
-		// Check for case that group doesn't exist
-		if ($page_group === false) {
-			$this->error_response($main_template, "The group you're looking for does not exist :/");
-			return ContentPage::PAGE_OKAY;
-		}
-		
 		// Set values of group template
-		$group_template->page_id = $pageID;
+		$group_template->group_id = $pageID;
 		$group_template->group_name = $page_group->get_name();
+		$group_template->group_projects = $group_projects;
 		
 		if ($account_session->check_login()) {
 			$group_template->login = true;

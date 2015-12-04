@@ -19,6 +19,7 @@ class ProjectsDatabase {
 	const NAME_MAX_LENGTH = 40;
 
 	private $connection;
+	private $last_exception;
 	private $last_inserted; 
 	
 	function __construct($connection) {
@@ -52,7 +53,7 @@ class ProjectsDatabase {
 
 		// Variable containing SQL statement		
 		$con = $this->connection->get_pdo_connection();
-		$sql = "INSERT INTO projects (group_id,name,date_created) VALUES (:group_id, :name, now())";
+		$sql = "INSERT INTO projects (project_group,name,date_created) VALUES (:group_id, :name, now())";
 		
 		// Create PDO Prepared Statement
 		$stmt = $con->prepare($sql);
@@ -67,7 +68,7 @@ class ProjectsDatabase {
 			$this->last_inserted = $con->lastInsertId();
 
 		} catch (PDOException $e) {
-			$this->last_exception = $e->getMessage();
+			$this->last_exception = $e;
 			return ProjectsDatabase::NEW_PROJECT_INTERNAL_ERROR;
 		}
 
@@ -109,5 +110,9 @@ class ProjectsDatabase {
 
 	function get_last_inserted() {
 		return $this->last_inserted;
+	}
+
+	function get_last_exception_message() {
+		return $this->last_exception->getMessage();
 	}
 }

@@ -1,16 +1,19 @@
 <?php
 
 namespace Pages;
-use \Framework\ContentPage;
+
+use \Framework\TemplatePage;
+use \Application\SitePage;
 use \Application\AccountSession;
 
-class LandingPage extends ContentPage {
-	function main($main_template) {
+class LandingPage extends SitePage {
+	function generate_page() {
+		$main_template = $this->get_template();
 
-		$account_session = new AccountSession(null);
+		$account_session = $this->get_account_session();
 		if ($account_session->check_login()){
 			header('Location: ' . WEB_PATH."/user/".$account_session->get_account_id());
-			return ContentPage::PAGE_REDIRECT;
+			return TemplatePage::PAGE_REDIRECT;
 		}
 
 
@@ -20,6 +23,6 @@ class LandingPage extends ContentPage {
 		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");
 		$main_template->contents_template = $landing_template;
 
-		return ContentPage::PAGE_OKAY;
+		return TemplatePage::PAGE_OKAY;
 	}
 }

@@ -15,10 +15,7 @@ class AccountSession {
 	// If logged in
 	private $account_info;
 
-	function __construct($connection) {
-		// Initialize session variables
-		session_start();
-
+	function __construct() {
 		// Initialize instance variables using session data
 		$this->set_instance_from_session();
 	}
@@ -37,10 +34,9 @@ class AccountSession {
 		// Set the user session
 		$_SESSION['account_logged_in'] = AccountSession::SESSION_OKAY;
 		$_SESSION['account_info'] = array(
-			'account_id' => $row['account_id']
+			'account_id' => $data['account_id']
 		);
 		$this->set_instance_from_session();
-		return AccountSession::LOGIN_OKAY;
 	}
 
 	function logout() {
@@ -49,7 +45,7 @@ class AccountSession {
 			session_destroy();
 		}
 	}
-	
+
 	/**
 	 * This function checks to see if the user logs in
 	 *

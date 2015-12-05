@@ -39,9 +39,14 @@ $__LOADER->add_class_path('pages');
  * the request to  particular module.
  */
 function main() {
+	// Start the session manager
+	session_start();
+
+	// Create request object from query
 	$requestString = (isset($_GET['ri'])) ? $_GET['ri'] : '';
 	$request = new \Framework\Request($requestString);
 	
+	// Get page name from request
 	$page = $request->get_page();
 
 	if ($page === "" || $page === "index") {
@@ -49,51 +54,42 @@ function main() {
 		$pObject->run();
 	}
 	else if ($page === "login") {
-		$ex = new \Pages\LoginPage($request);
-		$ex->run();
+		$page_object = new \Pages\LoginPage($request);
 	}
 	else if ($page === "register") {
-		$ex = new \Pages\RegisterPage($request);
-		$ex->run();
+		$page_object = new \Pages\RegisterPage($request);
 	}
 	else if ($page === "register_submit") {
-		$ex = new \Pages\RegisterSubmit($request);
-		$ex->run();
+		$page_object = new \Pages\RegisterSubmit($request);
 	}
 	else if ($page === "login_submit") {
-		$ex = new \Pages\LoginSubmit($request);
-		$ex->run();
+		$page_object = new \Pages\LoginSubmit($request);
 	}
 	else if ($page === "UpDownCode") {
-		$ex = new \Pages\UpDownCode();
-		$ex->run();
+		$page_object = new \Pages\UpDownCode();
 	}
 	else if ($page === "create_group") {
-		$ex = new \Pages\NewGroupSubmit($request);
-		$ex->run();
+		$page_object = new \Pages\NewGroupSubmit($request);
 	}
 	else if ($page === "create_project") {
-		$ex = new \Pages\NewProjectSubmit($request);
-		$ex->run();
+		$page_object = new \Pages\NewProjectSubmit($request);
 	}
 	else if ($page === "user") {
-		$ex = new \Pages\UserPage($request);
-		$ex->run();
+		$page_object = new \Pages\UserPage($request);
 	}
 	else if ($page === "group") {
 
-		$ex = new \Pages\GroupPage($request);
-		$ex->run();
+		$page_object = new \Pages\GroupPage($request);
 	}
 	else if ($page === "logout") {
 
-		$ex = new \Pages\LogoutSubmit($request);
-		$ex->run();
+		$page_object = new \Pages\LogoutSubmit($request);
 	}
 	else {
-		$ex = new \Pages\TemplateTestPage($request);
-		$ex->run();
+		$page_object = new \Pages\TemplateTestPage($request);
 	}
+
+	$page_object->run();
 
 }
 

@@ -1,7 +1,8 @@
- 
 <?php
 
 namespace Application;
+use \Framework\Template;
+use \Framework\TemplatePage;
 use \Application\AccountSession;
 
 abstract class SitePage extends TemplatePage {
@@ -11,7 +12,8 @@ abstract class SitePage extends TemplatePage {
 
 	function __construct($request, $account_session) {
 		parent::__construct($request);
-		$this->account_session = $account_session;
+		
+		$this->account_session = new AccountSession();
 	}
 
 	function setup_site_template() {
@@ -21,7 +23,7 @@ abstract class SitePage extends TemplatePage {
 		// Set the main template to the site template
 		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");
 
-		if ( $account_session->check_login() ) {
+		if ( $this->account_session->check_login() ) {
 			$main_template->has_account = true;
 		}
 	}
@@ -36,6 +38,14 @@ abstract class SitePage extends TemplatePage {
 		}
 
 		$this->generate_page();
+	}
+
+	protected function get_page_template() {
+		return $this->page_template;
+	}
+
+	protected function get_account_session() {
+		return $this->account_session;
 	}
 
 }

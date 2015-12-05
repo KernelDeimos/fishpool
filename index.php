@@ -85,6 +85,11 @@ function main() {
 		$ex = new \Pages\GroupPage($request);
 		$ex->run();
 	}
+	else if ($page === "logout") {
+
+		$ex = new \Pages\LogoutSubmit($request);
+		$ex->run();
+	}
 	else {
 		$ex = new \Pages\TemplateTestPage($request);
 		$ex->run();

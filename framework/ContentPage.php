@@ -1,6 +1,7 @@
 <?php
 
 namespace Framework;
+use \Application\AccountSession;
 
 /**
  * This class represents any response that is designed to
@@ -13,8 +14,15 @@ abstract class ContentPage extends Page {
 	abstract protected function main($template);
 
 	function run() {
-		$template = new Template();
+		$template = new Template();		
 		$status = $this->main($template);
+		
+		$acccount_session = new AccountSession(null);
+		if ($account_session->check_login()){
+			$template->check = true;
+		}else {
+			$template->check = false;
+		}
 
 		switch ($status) {
 			case ContentPage::PAGE_OKAY:

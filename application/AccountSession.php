@@ -105,11 +105,10 @@ class AccountSession {
 	}
 
 	function logout() {
-
-		if ($this->is_logged_in === false) {
-			return false;
-		} // else
-		return true;
+		if ($this->is_logged_in) {
+			session_unset();
+			session_destroy();
+		}
 	}
 
 

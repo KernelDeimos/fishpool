@@ -19,7 +19,16 @@ class UserPage extends ContentPage {
 		
 		$main_template->contents_template = $error_template;
 	}
-
+	function do_post($users_database, $pageID){
+		if(isset($_POST['edit_info'])) {					
+			$users_database->set_bio($pageID, $_POST['bio']);
+			$users_database->set_facebook($pageID, $_POST['facebook']);
+			$users_database->set_twitter($pageID, $_POST['twitter']);
+			$users_database->set_linkedin($pageID, $_POST['linkedin']);
+			$users_database->set_email($pageID, $_POST['email']);
+		}
+	}
+	
 	function main($main_template) {
 		
 		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");		
@@ -38,11 +47,15 @@ class UserPage extends ContentPage {
 		// Get PageID from page request
 		$pageID = $this->request->get_parameter(0);
 		$pageID = intval($pageID);
-
+		
+		
 		// Instantiate needed data managers
 		$users_database = new UsersDatabase($database_connection);
 		$groups_database = new GroupsDatabase($database_connection);
-
+		
+		if ($_SERVER["REQUEST_METHOD"] === "POST"){
+			$this->do_post($users_database, $pageID); 
+		}
 		// Get the page user
 		$page_user = $users_database->get_user_by_id($pageID);
 		// Check for case that user doesn't exist

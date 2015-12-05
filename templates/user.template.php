@@ -19,31 +19,80 @@
 			
 			
 			<div class="form-body">
-				<?php if($bio == NULL && $facebook == NULL && $twitter == NULL && $linkedin == NULL && $email == NULL){ ?>
-					<label class="col-xs-12"for="reg_name">we've got nothing</label>
+				<?php if ($is_own_page){ ?>
+					<form class = "form-horizontal" method = "POST">						
+						<div class="form-group">
+							<label class="col-xs-12"
+							for="reg_name">Personal info: </label>
+							<div class="col-xs-12">
+								<input type="text" name="bio" class="form-control" id="reg_name" 
+								value = "<?php echo $bio; ?>" style="font-family: 'PT Sans Caption', sans-serif;">							
+							</div>
+						</div>						
+						<div class="form-group">
+							<label class="col-xs-12"
+							for="reg_name">Facebook: </label>
+							<div class="col-xs-12">
+								<input type="text" name="facebook" class="form-control" id="reg_name"
+								value = "<?php echo $facebook; ?>" style="font-family: 'PT Sans Caption', sans-serif;">							
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-12"
+							for="reg_name">Twitter: </label>
+							<div class="col-xs-12">
+								<input type="text" name="twitter" class="form-control" id="reg_name"
+								value = "<?php echo $twitter; ?>" style="font-family: 'PT Sans Caption', sans-serif;">							
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-12"
+							for="reg_name">Linkedin: </label>
+							<div class="col-xs-12">
+								<input type="text" name="linkedin" class="form-control" id="reg_name"
+								value = "<?php echo $linkedin; ?>" style="font-family: 'PT Sans Caption', sans-serif;">							
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-12"
+							for="reg_name">Email: </label>
+							<div class="col-xs-12">
+								<input type="text" name="email" class="form-control" id="reg_name"
+								value = "<?php echo $email; ?>" style="font-family: 'PT Sans Caption', sans-serif;">							
+							</div>
+						</div>						
+						</br>						
+						<div class=" col-xs-12 ">
+							<input type="submit" class="btn btn-default" value="Edit info" name = "edit_info">
+						</div>	
+						</br>					
+					</form>
+					
+					
+				<?php } 
+				else { ?>
+					<?php if($bio == NULL && $facebook == NULL && $twitter == NULL && $linkedin == NULL && $email == NULL){ ?>
+						<label class="col-xs-12"for="reg_name">we've got nothing</label>
+					<?php } ?>
+					<?php if($bio != NULL){ ?> 
+						<label class="col-xs-12"for="reg_name">About:</label></br>
+					<li><?php echo $bio;} ?> </li>						
+					<?php if($facebook != NULL){ ?> 
+						<label class="col-xs-12"for="reg_name">Facebook:</label></br> 
+					<li><?php echo $facebook;} ?> </li>
+					<?php if($twitter != NULL){ ?> 
+						<label class="col-xs-12"for="reg_name">Twitter:</label></br>
+					<li><?php echo $twitter;} ?> </li>
+					<?php if($linkedin != NULL){ ?> 
+						<label class="col-xs-12"for="reg_name">Linkedin:</label></br>
+					<li><?php echo $linkedin;} ?> </li>
+					<?php if($email != NULL){ ?> 
+						<label class="col-xs-12"for="reg_name">Email:</label></br>
+					<li><?php echo $email;} ?> </li>					
 				<?php } ?>
-				<?php if($bio != NULL){ ?> 
-					<label class="col-xs-12"for="reg_name">bio:</label>
-				<?php echo $bio;} ?> 						
-				<?php if($facebook != NULL){ ?> 
-					<label class="col-xs-12"for="reg_name">facebook:</label> 
-				<?php echo $facebook;} ?> 
-				<?php if($twitter != NULL){ ?> 
-					<label class="col-xs-12"for="reg_name">twitter:</label>
-				<?php echo $twitter;} ?> 
-				<?php if($linkedin != NULL){ ?> 
-					<label class="col-xs-12"for="reg_name">linkedin:</label>
-				<?php echo $linkedin;} ?> 
-				<?php if($email != NULL){ ?> 
-					<label class="col-xs-12"for="reg_name">email:</label>
-				<?php echo $email;} ?> 						
-				<?php if ($is_own_page) { ?>						
-					<div class=" col-xs-12 ">
-						<input type="submit" class="btn btn-default" value="Edit info">
-					</div>						
-				<?php } ?>
-			
+			<br />
 			</div>
+				
 		</div>		
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

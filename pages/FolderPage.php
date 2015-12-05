@@ -148,6 +148,9 @@ class FolderPage extends SitePage {
 			$this->do_post();
 		}
 
+		// Get folder from database
+		$folder = $files_database->get_folder_by_id($pageID);
+
 		// Fetch folders and files in the requested folder
 		$folders_list = $files_database->get_folders_by_parent($pageID);
 		$files_list = $files_database->get_files_by_folder($pageID);
@@ -160,7 +163,13 @@ class FolderPage extends SitePage {
 
 		// Set meta data for folder contents
 		$folder_template->folder_name = "Test Folder";
-		$folder_template->folder_id = $pageID;;
+		$folder_template->folder_id = $pageID;
+
+		// Set parent directory if applicable
+		$parent = $folder->get_parent_id();
+		if ($parent != null) {
+			$folder_template->parent_uri = WEB_PATH.'/folder/'.$parent;
+		}
 
 		// Add folders and files to folder page
 		$folder_template->items = array_merge($folders_list, $files_list);

@@ -145,6 +145,41 @@ class FilesDatabase {
 	 	return $results;
 	}
 
+	/**
+	 * This function fetches a folder with the given id from
+	 * the database, and constructs a new Folder object representing
+	 * the record.
+	 *
+	 * @param folder_id the id of the folder to fetch
+	 * @return a Folder object representing the folder.
+	 *     or false if the record was not found.
+	 */
+	function get_folder_by_id($folder_id) {
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+
+		// Prepare insert statement
+		$sql = "SELECT * FROM folders WHERE folder_id=:folder_id";
+		$statement = $con->prepare($sql);
+
+		// Bind folder id
+		$statement->bindValue("folder_id", $folder_id, PDO::PARAM_INT);
+
+		// Execute the statement
+		$statement->execute();
+
+		$results = array();
+
+		// Check if row exists
+		if ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
+	 		// Create folder object
+	 		$folder = new Folder($row);
+	 		return $folder;
+	 	}
+
+	 	return false;
+	}
+
 	function get_files_by_folder($folder_id) {
 		// Obtain a connection
 		$con = $this->connection->get_pdo_connection();

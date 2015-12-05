@@ -2,7 +2,7 @@
 
 namespace Application;
 
-class File {
+class File implements Listable {
 
 	private $data;
 
@@ -14,6 +14,9 @@ class File {
 	}
 	function get_type() {
 		return "file";
+	}
+	function get_access_uri() {
+		return WEB_PATH.'/file/'.$this->data['file_id'];
 	}
 
 }

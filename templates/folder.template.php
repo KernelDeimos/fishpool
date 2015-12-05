@@ -9,10 +9,18 @@
 <?php } ?>
 
 	<h1><?php echo $folder_name; ?></h1>
+	<?php if (isset($parent_uri)) { ?>
+		<a href="<?php echo $parent_uri; ?>">
+		<h3>[Up to <?php echo $folder_name; ?>]</h3>
+		</a>
+	<?php } ?>
 
 	<ul class="ul">
-		<?php foreach ($items as $item) { ?>
-			<li><?php echo $item->get_name(); ?></li>
+		<?php foreach ($items as $item) {
+			?>
+			<a href="<?php echo $item->get_access_uri(); ?>">
+				<li><?php echo $item->get_name(); ?></li>
+			</a>
 		<?php } ?>
 	</ul>
 
@@ -29,7 +37,7 @@
 			for="addfolder_name">Folder:</label>
 
 			<div class="col-xs-8 col-sm-8">
-				<input type="text" name="name" class="form-control" id="addfoldeR_name"
+				<input type="text" name="name" class="form-control" id="addfolder_name"
 				placeholder="Folder Name">
 			</div>
 

@@ -7,38 +7,20 @@ use PDOException;
 
 class AccountSession {
 
-	// Constants for account login outcomes
-	const LOGIN_OKAY = 0;
-	const LOGIN_NOT_FOUND = 1;
-	const LOGIN_BAD_PASSWORD = 2;
-	const LOGIN_ATTEMPTS_EXHAUSTED = 3;
-	const LOGIN_INVALID_EMAIL = 4;
-	const LOGIN_INTERNAL_ERROR = 5;
-	const LOGIN_EMPTY_FIELDS = 6;
-
 	const SESSION_OKAY = 1;
 
 	// Define instance variables for session state
 	private $is_logged_in;
-	private $connection;
 
 	// If logged in
 	private $account_info;
-
-	private $last_exception;
 
 	function __construct($connection) {
 		// Initialize session variables
 		session_start();
 
-		// Instantiate instance variables with params
-		$this->connection = $connection;
-
+		// Initialize instance variables using session data
 		$this->set_instance_from_session();
-	}
-
-	function get_last_exception_message() {
-		return $this->last_exception;
 	}
 
 	/**
@@ -51,57 +33,14 @@ class AccountSession {
 	 * @param password unsanitized/unhashed user password
 	 * @return integer representing status of login attempt
 	 */
-	function attempt_login($email, $password) {
-		try {
-			if ($email == '' or $password == '') {
-				return AccountSession::LOGIN_EMPTY_FIELDS;
-			}
-			
-			// Get Connection
-			$con = $this->connection->get_pdo_connection();
-
-		 	// Prepare SQL statement for finding the user
-			$sql = "SELECT account_id, pass_salt, pass_hash FROM accounts WHERE reset_email=:email";
-		 	$stmt = $con->prepare($sql);
-		 	$stmt->bindValue( "email", $email, PDO::PARAM_STR );
-		 	$stmt->execute();
-
-		 	// Ensure that no row was found
-		 	if (!( $row = $stmt->fetch(PDO::FETCH_ASSOC) )) {
-		 		return AccountSession::LOGIN_NOT_FOUND; // Account doesn't exist
-		 	}
-
-		 	// Declare some things
-		 	$salt = $row['pass_salt'];
-		 	$hash = $row['pass_hash'];
-
-		 	// Hash the request password
-
-			// Hash password
-			$requestHash = hash('sha256', $salt . $password);
-
-			// Get that password out of memory
-			unset($password);
-
-			// Check if the hashes match
-			if ($hash === $requestHash) {
-				// Set the user session
-				$_SESSION['account_logged_in'] = AccountSession::LOGIN_OKAY;
-				$_SESSION['account_info'] = array(
-					'account_id' => $row['account_id']
-				);
-				$this->set_instance_from_session();
-				return AccountSession::LOGIN_OKAY;
-			} else {
-				return AccountSession::LOGIN_BAD_PASSWORD;
-			}
-		} catch (PDOException $e) {
-			$this->last_exception = $e->getMessage();
-			return AccountSession::LOGIN_INTERNAL_ERROR;
-		} catch (Exception $e) {
-			$this->last_exception = $e->getMessage();
-			return AccountSession::LOGIN_INTERNAL_ERROR;
-		}
+	function login_with_data($data) {
+		// Set the user session
+		$_SESSION['account_logged_in'] = AccountSession::SESSION_OKAY;
+		$_SESSION['account_info'] = array(
+			'account_id' => $row['account_id']
+		);
+		$this->set_instance_from_session();
+		return AccountSession::LOGIN_OKAY;
 	}
 
 	function logout() {
@@ -110,8 +49,7 @@ class AccountSession {
 			session_destroy();
 		}
 	}
-
-
+	
 	/**
 	 * This function checks to see if the user logs in
 	 *
@@ -125,20 +63,24 @@ class AccountSession {
 		return false;
 	}
 
-
 	function get_account_id() {
 		if ($this->is_logged_in) {
 			return $this->account_info['account_id'];
 		}
-		return false;
+		// If user was not logged in, this method should
+		// never have been called.
+		throw new Exception("AccountSession: Unable to get an account ID; no session!");
 	}
 
 	private function set_instance_from_session() {
 		// Determine from session variable if user is logged in
-		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === AccountSession::LOGIN_OKAY) {
+		if (isset($_SESSION['account_logged_in']) && $_SESSION['account_logged_in'] === AccountSession::SESSION_OKAY) {
+			// Set session as logged in
 			$this->is_logged_in = true;
+			// Set account info from session variable
 			$this->account_info = $_SESSION['account_info'];
 		} else {
+			// Set session as a guest session
 			$this->is_logged_in = false;
 		}
 	}

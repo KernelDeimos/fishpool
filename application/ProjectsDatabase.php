@@ -91,7 +91,7 @@ class ProjectsDatabase {
 		$sql = "SELECT * FROM projects WHERE project_group=:group_id";
 		$statement = $con->prepare($sql);
 
-		// Bind values for profile
+		// Bind grouop id
 		$statement->bindValue("group_id", $group_id, PDO::PARAM_INT);
 
 		// Execute the statement
@@ -101,7 +101,7 @@ class ProjectsDatabase {
 
 		// Check if row exists
 		while ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
-	 		// Create user object
+	 		// Create project object
 	 		$project = new Project($row);
 	 		$results[] = $project;
 	 	}

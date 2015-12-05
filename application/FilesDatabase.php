@@ -119,6 +119,58 @@ class FilesDatabase {
 		return FilesDatabase::NEW_ITEM_OKAY;
 	}
 
+	function get_folders_by_parent($parent_id) {
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+
+		// Prepare insert statement
+		$sql = "SELECT * FROM folders WHERE parent=:parent_id";
+		$statement = $con->prepare($sql);
+
+		// Bind parent folder id
+		$statement->bindValue("parent_id", $parent_id, PDO::PARAM_INT);
+
+		// Execute the statement
+		$statement->execute();
+
+		$results = array();
+
+		// Check if row exists
+		while ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
+	 		// Create folder object
+	 		$folder = new Folder($row);
+	 		$results[] = $folder;
+	 	}
+
+	 	return $results;
+	}
+
+	function get_files_by_folder($folder_id) {
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+
+		// Prepare insert statement
+		$sql = "SELECT * FROM files WHERE folder=:folder_id";
+		$statement = $con->prepare($sql);
+
+		// Bind parent folder id
+		$statement->bindValue("folder_id", $folder_id, PDO::PARAM_INT);
+
+		// Execute the statement
+		$statement->execute();
+
+		$results = array();
+
+		// Check if row exists
+		while ( $row = $statement->fetch(PDO::FETCH_ASSOC) ) {
+	 		// Create file object
+	 		$file = new File($row);
+	 		$results[] = $file;
+	 	}
+
+	 	return $results;
+	}
+
 	function get_last_inserted() {
 		return $this->last_inserted;
 	}

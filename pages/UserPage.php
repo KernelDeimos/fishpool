@@ -1,7 +1,7 @@
 <?php
 
 namespace Pages;
-use \Framework\ContentPage;
+use \Application\SitePage;
 use \Application\DatabaseConnection;
 use \Application\UsersDatabase;
 use \Application\GroupsDatabase;
@@ -9,15 +9,15 @@ use \Application\AccountSession;
 use \Application\User;
 use PDOException;
 
-class UserPage extends ContentPage {
+class UserPage extends SitePage {
 
-	function error_response($main_template, $problem) {
+	function error_response($problem) {
 		$error_template = new \Framework\Template();
 		$error_template->set_template_file(SITE_PATH."/templates/simple_message.template.php");
 		$error_template->title = "Oops!";
 		$error_template->message = $problem;
 		
-		$main_template->contents_template = $error_template;
+		$this->set_page_template($error_template);
 	}
 	function do_post($users_database, $pageID){
 		if(isset($_POST['edit_info'])) {					
@@ -29,19 +29,18 @@ class UserPage extends ContentPage {
 		}
 	}
 	
-	function main($main_template) {
-		
-		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");		
+	function generate_page() {
+
 		$account_session = new AccountSession(null);
 
-		$user_template = new \Framework\Template();
+		$user_template = $this->get_page_template();
 		$user_template->set_template_file(SITE_PATH."/templates/user.template.php");
 		
 		try {
 			$database_connection = \Application\DatabaseConnection::create_from_ini(SITE_PATH.'/config/database.ini');
 		} catch (PDOException $e) {
-			$this->error_response($main_template, "The following internal error occured: ".$e->getMessage());
-			return ContentPage::PAGE_OKAY;
+			$this->error_response("The following internal error occured: ".$e->getMessage());
+			return SitePage::PAGE_OKAY;
 		}
 
 		// Get PageID from page request
@@ -60,8 +59,8 @@ class UserPage extends ContentPage {
 		$page_user = $users_database->get_user_by_id($pageID);
 		// Check for case that user doesn't exist
 		if ($page_user === false) {
-			$this->error_response($main_template, "The user you're looking for does not exist :/");
-			return ContentPage::PAGE_OKAY;
+			$this->error_response("The user you're looking for does not exist :/");
+			return SitePage::PAGE_OKAY;
 		}
 		
 		// Set values of user template
@@ -90,7 +89,6 @@ class UserPage extends ContentPage {
 			}
 		}
 
-		$main_template->contents_template = $user_template;
-		return ContentPage::PAGE_OKAY;
+		return SitePage::PAGE_OKAY;
 	}
 }

@@ -10,9 +10,9 @@ abstract class SitePage extends TemplatePage {
 	private $page_template;
 	private $account_session;
 
-	function __construct($request, $account_session) {
+	function __construct($request) {
 		parent::__construct($request);
-		
+
 		$this->account_session = new AccountSession();
 	}
 
@@ -25,22 +25,32 @@ abstract class SitePage extends TemplatePage {
 
 		if ( $this->account_session->check_login() ) {
 			$main_template->has_account = true;
+		} else {
+			$main_template->has_account = false;
 		}
+
+		$main_template->contents_template = $this->page_template;
 	}
 
 	function main() {
-		$this->setup_site_template();
 
 		$this->page_template = new Template();
 
-		if ($_SERVER['REQUEST_METHOD'] === "POST") {
-			$this->do_post();
-		}
+		$status = $this->generate_page();
+		$this->setup_site_template();
 
-		$this->generate_page();
+		return $status;
 	}
 
+	abstract protected function generate_page();
+
+	protected function do_post() {}
+	protected function on_instance() {}
+
 	protected function get_page_template() {
+		return $this->page_template;
+	}
+	protected function set_page_template() {
 		return $this->page_template;
 	}
 

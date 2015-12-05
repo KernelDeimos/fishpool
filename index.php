@@ -49,9 +49,11 @@ function main() {
 	// Get page name from request
 	$page = $request->get_page();
 
+	// Declare page object
+	$page_object = null;
+
 	if ($page === "" || $page === "index") {
-		$pObject = new \Pages\LandingPage($request);
-		$pObject->run();
+		$page_object = new \Pages\LandingPage($request);
 	}
 	else if ($page === "login") {
 		$page_object = new \Pages\LoginPage($request);
@@ -84,6 +86,10 @@ function main() {
 	else if ($page === "logout") {
 
 		$page_object = new \Pages\LogoutSubmit($request);
+	}
+	else if ($page === "folder") {
+
+		$page_object = new \Pages\FolderPage($request);
 	}
 	else {
 		$page_object = new \Pages\TemplateTestPage($request);

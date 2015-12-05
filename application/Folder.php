@@ -2,7 +2,7 @@
 
 namespace Application;
 
-class Project {
+class Folder {
 
 	private $data;
 
@@ -11,9 +11,6 @@ class Project {
 	}
 	function get_name() {
 		return $this->data['name'];
-	}
-	function get_folder() {
-		return $this->data['project_folder'];
 	}
 
 }

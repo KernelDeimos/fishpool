@@ -73,43 +73,14 @@
 	</br>
 	<?php foreach ($group_projects as $project) { ?>
 	<font size="5.5">&emsp;&emsp;&emsp;<?php echo $project->get_name(); ?></font> 
-	&emsp;<button type="button" class="btn btn-primary">+</button>
+	&emsp;
+	<a href="<?php echo WEB_PATH . '/folder/' . $project->get_folder(); ?>">
+		<button type="button" class="btn btn-primary">Open Project Folder</button>
+	</a>
 	
 	<p>
 		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #0000FF">Code Link 1</font><br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #000000">Done by: </font><font style="color: #FF0000"><i>Author 1 Name</i></font><br/>
 		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #0000FF">Code Link 2</font><br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #000000">Done by: </font><font style="color: #FF0000"><i>Author 2 Name</i></font><br/>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #0000FF">Code Link 3</font><br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #000000">Done by: </font><font style="color: #FF0000"><i>Author 3 Name</i></font><br/>
-		
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #0000FF">Code Link 4</font><br/>
-		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font style="color: #000000">Done by: </font><font style="color: #FF0000"><i>Author 4 Name</i></font><br/>
-
-		<form
-		class="form-horizontal basic-form"
-		role="form"
-		action="" method="POST"
-		data-success-url="<?php echo $_SERVER['REQUEST_URI']; ?>"
-		>
-			<input type="hidden" name="group_id" value="<?php echo $group_id; ?>" />
-			<div class="form-group">
-				<label class="control-label col-xs-12 col-sm-2"
-				for="reg_name">File:</label>
-
-				<div class="col-xs-6 col-sm-4">
-					<input type="file" name="name" class="form-control" id="reg_name"
-					placeholder="Project Name">
-				</div>
-
-				<div class="col-xs-6 col-sm-4">
-					<input type="submit" class="btn btn-default" value="Upload File">
-				</div>
-			</div>
-		</form>
 				
 	</p>
 	<?php } ?>

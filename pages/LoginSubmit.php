@@ -11,12 +11,6 @@ use \PDOException;
 
 class LoginSubmit extends DataPage {
 
-	private $account_session;
-
-	function __construct($request, $account_session) {
-		$this->account_session = $account_session;
-	}
-
 	function send_error($msg) {
 		return array(
 			'status' => "error",
@@ -51,7 +45,7 @@ class LoginSubmit extends DataPage {
 		}
 
 		// Get instance of AccountSession
-		$account_session = $this->account_session;
+		$account_session = new AccountSession();
 		$session_op = new AccountSessionOperator($database, $account_session);
 
 		// Attempt to register user

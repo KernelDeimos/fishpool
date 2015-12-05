@@ -53,13 +53,14 @@ class ProjectsDatabase {
 
 		// Variable containing SQL statement		
 		$con = $this->connection->get_pdo_connection();
-		$sql = "INSERT INTO projects (project_group,name,date_created) VALUES (:group_id, :name, now())";
+		$sql = "INSERT INTO projects (project_group,project_folder,name,date_created) VALUES (:group_id, :project_folder, :name, now())";
 		
 		// Create PDO Prepared Statement
 		$stmt = $con->prepare($sql);
 		
 		// Bind variables to statement
 		$stmt->bindValue("group_id", $group_id, PDO::PARAM_INT);
+		$stmt->bindValue("project_folder", $root_folder_id, PDO::PARAM_INT);
 		$stmt->bindValue("name", $project_name, PDO::PARAM_STR);
 		
 		try {

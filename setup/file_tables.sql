@@ -3,7 +3,7 @@ use FishpoolDB;
 
 CREATE TABLE IF NOT EXISTS folders (
 	folder_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-	parent MEDIUMINT NOT NULL,
+	parent MEDIUMINT,
 	-- maximum filename length on most OSs is 255
 	name  VARCHAR(255),
 

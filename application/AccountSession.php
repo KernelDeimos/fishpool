@@ -105,8 +105,13 @@ class AccountSession {
 	}
 
 	function logout() {
-		//
+
+		if ($this->is_logged_in === false) {
+			return false;
+		} // else
+		return true;
 	}
+
 
 	/**
 	 * This function checks to see if the user logs in

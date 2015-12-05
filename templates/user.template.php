@@ -25,10 +25,9 @@
 				</div>
 
 				<div class="form-body">
-					I put the box here for demo; feel free to change it
 					<ul>
 						<?php if (isset($groups)) foreach ($groups as $group) { ?>
-							<li><?php echo $group->get_name(); ?></li>
+							<li><a href="<?php echo WEB_PATH?>/group/<?php echo $group->get_id();?>"><?php echo $group->get_name();?></a></li>
 						<?php } else { ?>
 							Error fetching groups! :/ [<?php echo $groups_fetch_error; ?>]
 						<?php } ?>

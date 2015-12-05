@@ -151,19 +151,52 @@ class UsersDatabase {
 	function set_twitter($account_id, $twitter){
 		// Obtain a connection
 		$con = $this->connection->get_pdo_connection();
-		
+		//do the thing
+		$sql = "UPDATE users SET info_twitter=:info_twitter WHERE account_id=:account_id";
+		$stmt = $con->prepare($sql);
+		$stmt->bindValue( "info_twitter",  $twitter, PDO::PARAM_STR );
+		$stmt->bindValue( "account_id",  $account_id, PDO::PARAM_INT );
+		$stmt->execute();
 	}
 	function set_facebook($account_id, $facebook){
-		
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+		//do the thing
+		$sql = "UPDATE users SET info_facebook=:info_facebook WHERE account_id=:account_id";
+		$stmt = $con->prepare($sql);
+		$stmt->bindValue( "info_facebook",  $facebook, PDO::PARAM_STR );
+		$stmt->bindValue( "account_id",  $account_id, PDO::PARAM_INT );
+		$stmt->execute();
 	}
 	function set_linkedin($account_id, $linkedin){
-		
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+		//do the thing
+		$sql = "UPDATE users SET info_linkedin=:info_linkedin WHERE account_id=:account_id";
+		$stmt = $con->prepare($sql);
+		$stmt->bindValue( "info_linkedin",  $linkedin, PDO::PARAM_STR );
+		$stmt->bindValue( "account_id",  $account_id, PDO::PARAM_INT );
+		$stmt->execute();
 	}
 	function set_email($account_id, $email){
-		
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+		//do the thing
+		$sql = "UPDATE users SET info_email=:info_email WHERE account_id=:account_id";
+		$stmt = $con->prepare($sql);
+		$stmt->bindValue( "info_email",  $email, PDO::PARAM_STR );
+		$stmt->bindValue( "account_id",  $account_id, PDO::PARAM_INT );
+		$stmt->execute();
 	}
 	function set_bio($account_id, $bio){
-		
+		// Obtain a connection
+		$con = $this->connection->get_pdo_connection();
+		//do the thing
+		$sql = "UPDATE users SET info_bio=:info_bio WHERE account_id=:account_id";
+		$stmt = $con->prepare($sql);
+		$stmt->bindValue( "info_bio",  $bio, PDO::PARAM_STR );
+		$stmt->bindValue( "account_id",  $account_id, PDO::PARAM_INT );
+		$stmt->execute();
 	}
 
 	/**

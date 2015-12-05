@@ -105,6 +105,12 @@ class AccountSession {
 	}
 
 	function logout() {
+
+		if ($this->is_logged_in === false) {
+			return false;
+		} // else
+		return true;
+	}
 		//
 	}
 

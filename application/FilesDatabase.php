@@ -37,10 +37,10 @@ class FilesDatabase {
 
 		// Ensure that group name is valid
 		{
-			$test = preg_match('/^[a-zA-Z0-9-_\.]{'
+			$test = preg_match('/^[a-zA-Z0-9_\.\s-]{'
 				.FilesDatabase::NAME_MIN_LENGTH.','.FilesDatabase::NAME_MAX_LENGTH
 				.'}$/u',
-				$project_name
+				$folder_name
 			);
 
 			if ($test === 0) {

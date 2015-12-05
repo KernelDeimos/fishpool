@@ -2,12 +2,11 @@
 
 namespace Pages;
 use \Framework\ContentPage;
-
 use \Application\DatabaseConnection;
 use \Application\UsersDatabase;
 use \Application\GroupsDatabase;
 use \Application\AccountSession;
-
+use \Application\User;
 use PDOException;
 
 class UserPage extends ContentPage {
@@ -55,7 +54,11 @@ class UserPage extends ContentPage {
 		// Set values of user template
 		$user_template->page_id = $pageID;
 		$user_template->user_name = $page_user->get_username();
-
+		$user_template->facebook = $page_user->get_facebook();
+		$user_template->twitter = $page_user->get_twitter();
+		$user_template->linkedin = $page_user->get_linkedin();
+		$user_template->email = $page_user->get_email();
+		$user_template->bio = $page_user->get_bio();
 		// Attempt to add groups to template
 		try {
 			$user_template->groups = $groups_database->get_groups_by_owner($pageID);

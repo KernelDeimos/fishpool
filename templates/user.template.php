@@ -7,20 +7,42 @@
 #                 <><                                       #    
 #===========================================================#
 -->
-<html>
 
 
 <div class="container">
-	<div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
+	<div class="col-xs-12 <?php if ($is_own_page) { ?>col-sm-6 col-md-8 col-lg-9<?php } ?>">
 		<div class="fp-form-box">
 			<div class="form-header">
 				<div class="title"><?php echo $user_name . " bio";?>
-					<?php if ($is_own_page) { ?>
-						<div class="form-body">
-							edit button here
-						</div>
-					<?php } ?>
 				</div>
+			</div>
+			
+			
+			<div class="form-body">
+				<?php if($bio == NULL && $facebook == NULL && $twitter == NULL && $linkedin == NULL && $email == NULL){ ?>
+					<label class="col-xs-12"for="reg_name">we've got nothing</label>
+				<?php } ?>
+				<?php if($bio != NULL){ ?> 
+					<label class="col-xs-12"for="reg_name">bio:</label>
+				<?php echo $bio;} ?> 						
+				<?php if($facebook != NULL){ ?> 
+					<label class="col-xs-12"for="reg_name">facebook:</label> 
+				<?php echo $facebook;} ?> 
+				<?php if($twitter != NULL){ ?> 
+					<label class="col-xs-12"for="reg_name">twitter:</label>
+				<?php echo $twitter;} ?> 
+				<?php if($linkedin != NULL){ ?> 
+					<label class="col-xs-12"for="reg_name">linkedin:</label>
+				<?php echo $linkedin;} ?> 
+				<?php if($email != NULL){ ?> 
+					<label class="col-xs-12"for="reg_name">email:</label>
+				<?php echo $email;} ?> 						
+				<?php if ($is_own_page) { ?>						
+					<div class=" col-xs-12 ">
+						<input type="submit" class="btn btn-default" value="Edit info">
+					</div>						
+				<?php } ?>
+			
 			</div>
 		</div>		
 	</div>
@@ -37,7 +59,7 @@
 						<?php if (isset($groups)) foreach ($groups as $group) { ?>
 							<li style="font-family: 'PT Sans Caption', sans-serif;"><?php echo $group->get_name(); ?></li>
 						<?php } else { ?>
-							Error fetching groups! :/ [<?php echo $groups_fetch_error; ?>]
+							Error fetching groups! :/ [<?php echo $groups_fetch_error; ?>]`
 						<?php } ?>
 					</ul>
 				</div>
@@ -69,8 +91,8 @@
 							</div>
 						</div>
 					</form>				
-				</div></div>
-		
+				</div>
+			</div>		
 		<?php } ?>
 	</div>
 </div>

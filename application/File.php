@@ -2,7 +2,7 @@
 
 namespace Application;
 
-class Folder {
+class File {
 
 	private $data;
 
@@ -13,7 +13,7 @@ class Folder {
 		return $this->data['name'];
 	}
 	function get_type() {
-		return "folder";
+		return "file";
 	}
 
 }

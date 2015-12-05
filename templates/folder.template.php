@@ -1,5 +1,13 @@
 <div class="container">
 
+<?php if (isset($status)) {
+	$class = ($status === "okay") ? "alert-success" : "alert-danger";
+	?>
+	<div class="alert <?php echo $class; ?>">
+		<?php echo $message; ?>
+	</div>
+<?php } ?>
+
 	<h1><?php echo $folder_name; ?></h1>
 
 	<ul class="ul">
@@ -17,8 +25,16 @@
 	>
 		<input type="hidden" name="folder_id" value="<?php echo $folder_id; ?>" />
 		<div class="form-group">
-			<div class="col-xs-offset-8 col-sm-offset-10 col-xs-4 col-sm-2">
-				<input name="folder" type="submit" class="btn btn-default" value="New Folder">
+			<label class="control-label col-xs-12 col-sm-2"
+			for="addfolder_name">Folder:</label>
+
+			<div class="col-xs-8 col-sm-8">
+				<input type="text" name="name" class="form-control" id="addfoldeR_name"
+				placeholder="Folder Name">
+			</div>
+
+			<div class="col-xs-4 col-sm-2">
+				<input name="folder" type="submit" class="btn btn-default" value="Create Folder">
 			</div>
 		</div>
 	</form>
@@ -28,15 +44,16 @@
 	role="form"
 	action="" method="POST"
 	data-success-url="<?php echo $_SERVER['REQUEST_URI']; ?>"
+	enctype="multipart/form-data"
 	>
 		<input type="hidden" name="folder_id" value="<?php echo $folder_id; ?>" />
 		<div class="form-group">
 			<label class="control-label col-xs-12 col-sm-2"
-			for="reg_name">File:</label>
+			for="addfile_file">File:</label>
 
 			<div class="col-xs-8 col-sm-8">
-				<input type="file" name="name" class="form-control" id="reg_name"
-				placeholder="Project Name">
+				<input type="file" name="codefile" class="form-control" id="addfile_file"
+				>
 			</div>
 
 			<div class="col-xs-4 col-sm-2">

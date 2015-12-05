@@ -11,7 +11,7 @@ class LoginPage extends ContentPage {
 		}
 
 		$login_template = new \Framework\Template();
-		$login_template->set_template_file(SITE_PATH."/templates/login.template.php");
+		$login_template->set_template_file(SITE_PATH."/templates/project_folder.template.php");
 
 		$main_template->set_template_file(SITE_PATH."/templates/full.template.php");
 		$main_template->contents_template = $login_template;

@@ -3,7 +3,12 @@ use FishpoolDB;
 
 CREATE TABLE IF NOT EXISTS users (
 	account_id MEDIUMINT NOT NULL AUTO_INCREMENT,
-	name  VARCHAR(40),
+	name  VARCHAR(40),	
+	info_facebook VARCHAR(255),
+	info_twitter VARCHAR(255),
+	info_linkedin VARCHAR(255),
+	info_email VARCHAR(255),	
+	info_bio TEXT,
 
 	FOREIGN KEY (account_id) REFERENCES accounts(account_id),
 	PRIMARY KEY (account_id)

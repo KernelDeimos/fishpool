@@ -20,5 +20,9 @@
   font-family: 'PT Sans Caption', sans-serif;
   opacity: 0.6;
 }
+.fp-header .logout-button {
+  margin-top: 6px;
+  float: right;
+}
 
 /* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

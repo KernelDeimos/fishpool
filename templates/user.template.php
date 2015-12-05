@@ -53,11 +53,11 @@
 					<div class="title">My Groups</div>
 				</div>
 
-				<div class="form-body" style="font-family: 'PT Sans Caption', sans-serif;">
-					
+
+				<div class="form-body">
 					<ul>
 						<?php if (isset($groups)) foreach ($groups as $group) { ?>
-							<li style="font-family: 'PT Sans Caption', sans-serif;"><?php echo $group->get_name(); ?></li>
+							<li><a href="<?php echo WEB_PATH?>/group/<?php echo $group->get_id();?>"><?php echo $group->get_name();?></a></li>
 						<?php } else { ?>
 							Error fetching groups! :/ [<?php echo $groups_fetch_error; ?>]`
 						<?php } ?>

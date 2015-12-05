@@ -105,8 +105,12 @@ class AccountSession {
 	}
 
 	function logout() {
-		//
+		if ($this->is_logged_in) {
+			session_unset();
+			session_destroy();
+		}
 	}
+
 
 	/**
 	 * This function checks to see if the user logs in

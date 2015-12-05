@@ -46,10 +46,13 @@
 	<div class="fp-header">
 		<div class="fp-title">
 			FishPool // <small>// Swim in Code</small>
-			<form class="logout-button" method="post" action="<?php echo WEB_PATH ?>/logout" >
-				<input type="submit" class="btn btn-default" value="Log Out" name="logout"/>
-			</form>
-			
+			<?php 
+				if ($check){
+					echo "<form class=logout-button method=post action=<?php echo WEB_PATH ?>/logout >
+						<input type=submit class=btn btn-default value=Log Out name=logout/>
+						</form>";
+				}
+			?>
 		</div>
 	</div>
 
